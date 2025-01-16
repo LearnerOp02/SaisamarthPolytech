@@ -1,0 +1,129 @@
+/* Footer Styles */
+.footer {
+    background: var(--navbar-bg); /* Same background as the navbar */
+    padding: 2.5rem 0;
+    color: #fff; /* White text for better contrast */
+    font-family: "Open Sans", sans-serif; /* Web-friendly font */
+    text-align: center; /* Improved alignment for smaller screens */
+    transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+.footer h5 {
+    color: #fff; /* White heading for strong contrast */
+    font-weight: 700; /* Bold for emphasis */
+    margin-bottom: 1rem;
+    font-size: 1.2rem; /* Standard heading size */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer h5:hover {
+    color: #ffc107; /* Accent color on hover */
+    transform: scale(1.05); /* Slight lift on hover */
+}
+
+.footer p {
+    font-size: 1rem; /* Readable font size for general text */
+    line-height: 1.8;
+    color: #fff; /* White text for consistency */
+    font-weight: 400; /* Regular weight for paragraphs */
+    transition: color 0.3s ease;
+}
+
+/* Change color of specific text */
+.footer .company-name,
+.footer .company-description {
+    color: #ffc107; /* Accent color for company name and description */
+}
+
+/* Links Styling */
+.footer-link,
+.footer-contact {
+    color: #fff; /* White links for uniform look */
+    text-decoration: none;
+    font-size: 0.95rem; /* Slightly smaller for less emphasis */
+    font-weight: 500; /* Medium weight for links */
+    transition: transform 0.3s ease;
+}
+
+.footer-link:hover,
+.footer-contact:hover {
+    color: #ffc107; /* Accent color on hover */
+    transform: translateY(-3px); /* Dynamic hover effect */
+}
+
+.contact-icon {
+    font-size: 1.6rem; /* Distinct size for icons */
+    color: #fff; /* White for icons */
+    margin-bottom: 0.5rem;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.contact-icon:hover {
+    transform: scale(1.2); /* Slight zoom on hover */
+    color: #ffc107; /* Accent color on hover */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white separator */
+    margin-top: 2rem;
+    padding-top: 1rem;
+    font-size: 0.85rem; /* Smaller font size for less prominent content */
+    color: #fff; /* White text */
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.footer-bottom:hover {
+    color: #ffc107; /* Accent color on hover */
+    border-color: #ffc107; /* Accent color on hover */
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+    .footer .col-md-6 {
+        text-align: left; /* Aligns content for medium+ screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 1.5rem; /* Reduced padding for smaller screens */
+        text-align: center;
+    }
+
+    .footer h5 {
+        font-size: 1rem; /* Slightly smaller heading size */
+        letter-spacing: 0.8px;
+    }
+
+    .footer p {
+        font-size: 0.9rem; /* Adjusted for smaller screens */
+    }
+
+    .footer .row {
+        flex-direction: column; /* Stacks content vertically */
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 1.2rem 0; /* Compact padding for the smallest screens */
+    }
+
+    .footer h5 {
+        font-size: 0.9rem; /* Smaller heading size */
+    }
+
+    .footer p {
+        font-size: 0.85rem; /* Reduced text size */
+        line-height: 1.6;
+    }
+
+    .footer-bottom {
+        font-size: 0.75rem; /* Minimal size for non-critical text */
+    }
+}
