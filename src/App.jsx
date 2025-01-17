@@ -1,4 +1,4 @@
-import React from "react";  // Explicitly import React
+import React, { useEffect } from "react"; // Import useEffect
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./component/Footer";
@@ -18,8 +18,26 @@ import FoodGradeCoating from "./page/Food";
 import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
 
-
 function App() {
+  // Embed chatbot script dynamically
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js"; // Chatbot source URL
+    script.id = "aron61ax8mt303a3tbkvg8shv119by0n"; // Replace with your Chatbot ID
+    script.async = true;
+    script.onload = () => {
+      console.log("Chatbot script loaded successfully!");
+    };
+    document.body.appendChild(script);
+
+    // Cleanup script on unmount
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
@@ -41,7 +59,6 @@ function App() {
         <Route path="/Durable" element={<ExteriorWallSystem />} />
       </Routes>
       <Footer />
-    
     </div>
   );
 }
