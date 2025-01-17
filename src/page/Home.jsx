@@ -1,95 +1,84 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/Home.css";
+import one from "./Images/1.jpg"; // Ensure the path is correct
+import two from "./Images/2.jpg";
+import three from "./Images/3.jpg";
+import four from "./Images/4.jpg";
+import five from "./Images/pic2.jpg";
+import six from "./Images/pic3.jpg";
+import seven from "./Images/pic4.jpg";
+import about from "./Images/about.png";
 
 const Home = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  // Rotating banner images
-  const bannerImages = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD71mSLIUzrRuKmq6Rn2R24IM22pSuAjwdtg&s",
-    "https://w7.pngwing.com/pngs/551/467/png-transparent-businessperson-small-business-business-plan-advertising-business-service-people-business-thumbnail.png",
-    "https://png.pngtree.com/png-vector/20231214/ourmid/pngtree-stylish-man-advertising-holiday-shopping-on-red-backdrop-png-image_11035797.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTjn3B0eecR2nYzdAOo80ozxZTQIlRpyFHOA&s",
-    "https://w7.pngwing.com/pngs/364/938/png-transparent-businessperson-thumb-signal-advertising-company-business-company-hand-service-thumbnail.png",
-  ];
-
-  // Rotate images every 5 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % bannerImages.length);
-    }, 5000);
-
-    return () => clearInterval(interval); // Clean up on unmount
-  }, [bannerImages.length]);
-
   return (
-    <div className="home-container" style={{ backgroundColor: "#f5f5dc" }}>
-      {/* Rotating Banner Section */}
-      <section className="rotating-banner d-flex justify-content-center mb-4">
-        <div
-          className="shadow"
-          style={{
-            backgroundImage: `url(${bannerImages[currentImage]})`,
-            width: "1400px", // Adjust the width for smaller size
-            height: "250px", // Adjust the height for a concise banner
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderRadius: "10px",
-          }}
-        ></div>
-      </section>
+    <div className="home-container">
+      {/* Carousel Section */}
+      <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src={five} className="d-block w-100" alt="Health Industry" />
+            <div className="carousel-caption d-none d-md-block">
+              <h5>Health Industry</h5>
+              <p>Providing cutting-edge solutions for healthcare environments.</p>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src={six} className="d-block w-100" alt="Automobile Industry" />
+            <div className="carousel-caption d-none d-md-block">
+              <h5>Automobile Industry</h5>
+              <p>Delivering durable and high-performance flooring solutions.</p>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <img src={seven} className="d-block w-100" alt="Epoxy Flooring" />
+            <div className="carousel-caption d-none d-md-block">
+              <h5>Epoxy Flooring</h5>
+              <p>Ensuring seamless and hygienic flooring for industrial spaces.</p>
+            </div>
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
 
       {/* Welcome Section */}
-      <section className="welcome-section text-center py-5">
+      <section className="welcome-section text-center bg-beige py-5">
         <div className="container">
-          <h1 className="text-primary mb-4 font-weight-bold">
-            Welcome to <span className="text-dark">Saisamarth Polytech Pvt. Ltd.</span>
+          <h1 className="welcome-title fade-in">
+            Welcome to <span className="highlight">Saisamarth Polytech Pvt. Ltd.</span>
           </h1>
-          <p className="lead text-dark font-weight-bold mb-4">
-            At <span className="text-primary">Saisamarth Polytech Pvt. Ltd.</span>, we pride ourselves on being leaders in delivering 
-            advanced cleanroom finishing solutions. With over 20 years of 
-            expertise, we are committed to providing innovative and reliable 
-            polymer technologies tailored for diverse industries such as 
-            pharmaceuticals, healthcare, and food processing.
+          <p className="welcome-text fade-in">
+            Delivering excellence in cleanroom finishing solutions with cutting-edge polymer technologies.
           </p>
-          <p className="text-secondary lead">
-            Our mission is to enhance industry standards by offering exceptional 
-            quality, cutting-edge innovation, and client-centric solutions. We 
-            aim to be your trusted partner in creating state-of-the-art cleanroom 
-            environments that stand the test of time.
-          </p>
-          <a href="#about-us" className="btn btn-primary btn-lg shadow">
-            Explore Our Expertise
-          </a>
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="about-us py-5" id="about-us">
+      <section className="about-us py-5 bg-beige fade-in">
         <div className="container">
-          <h2 className="text-center text-primary mb-4 text-dark">About Us</h2>
+          <h2 className="section-title text-center mb-5">About Us</h2>
           <div className="row align-items-center">
             <div className="col-md-6">
-              <img
-                src="https://media.istockphoto.com/id/526722121/photo/about-us-business-background.jpg?s=612x612&w=0&k=20&c=B0DCzpESLURkgFm_pAs3NnZWYrE3QuUmZFdhGf6glMw="
-                alt="About Us"
-                className="img-fluid rounded shadow-lg"
-              />
+              <img src={about} alt="About Us" className="img-fluid rounded shadow-lg" />
             </div>
             <div className="col-md-6">
-              <p className="text-dark lead">
-                With over 20 years of expertise, we specialize in epoxy and
-                polymer treatments for cleanroom environments. Our solutions are
-                trusted by leading pharmaceutical, healthcare, and food industry
-                clients, delivering both innovation and reliability.
+              <p className="about-text">
+                With over 20 years of expertise, we specialize in epoxy and polymer treatments for cleanroom environments. Our solutions are trusted by leading pharmaceutical, healthcare, and food industry clients, delivering both innovation and reliability.
               </p>
               <Link to="/aboutus">
-                <button className="btn btn-primary mt-3 btn-lg shadow">
-                  Learn More
-                </button>
+                <button className="btn btn-primary mt-3">Learn More</button>
               </Link>
             </div>
           </div>
@@ -97,40 +86,34 @@ const Home = () => {
       </section>
 
       {/* Leadership Section */}
-      <section className="leadership text-center py-5">
+      <section className="leadership text-center py-5 bg-beige fade-in">
         <div className="container">
-          <h2 className="text-primary mb-4 text-dark">Our Leadership</h2>
-          <div className="row justify-content-center">
-            <div className="col-md-4">
-              <img
-                src="https://via.placeholder.com/300x300?text=Atulkumar+Patil"
-                alt="Atulkumar Patil"
-                className="img-fluid rounded-circle shadow-lg mb-4"
-              />
-              <p className="text-dark lead">
-                Under the visionary leadership of our Director, Mr. Atulkumar
-                Patil, we are committed to delivering exceptional quality and
-                ensuring client satisfaction at every step.
-              </p>
-            </div>
-          </div>
+          <h2 className="section-title mb-2">Our Leadership</h2>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbfLmfxe4brnWCY5YkxaNfIjvMHoC3a1TLs3_sayfZpXTi10nfDJs9W2w9qJC7LY52fCs&usqp=CAU" alt="Leader" className="img-fluid rounded shadow-lg" />
+          <p className="leadership-text">
+            Under the visionary leadership of our Director, Mr. Atulkumar Patil, we are committed to delivering exceptional quality and ensuring client satisfaction at every step.
+          </p>
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="cta-section text-center py-4">
+      {/* Gallery Section */}
+      <section className="gallery py-5 bg-beige fade-in">
         <div className="container">
-          <h2 className="font-weight-bold text-dark">Let's Build Together</h2>
-          <p className="lead mb-4 text-dark">
-            We specialize in cleanroom finishing solutions. Let's discuss your
-            next project and take it to the next level.
-          </p>
-          <a
-            href="mailto:info@saisamarthpolytech.com"
-            className="btn btn-primary btn-lg shadow"
-          >
-            Get in Touch
-          </a>
+          <h2 className="section-title text-center mb-5">Our Work in Action</h2>
+          <div className="row">
+            {[one, two, three, four].map((image, index) => (
+              <div className="col-md-3 mb-4" key={index}>
+                <div className="card shadow-lg rounded">
+                  <img src={image} alt={`Gallery Image ${index + 1}`} className="card-img-top rounded-top" />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="d-flex justify-content-center mt-4">
+            <Link to="/clients">
+              <button className="btn btn-primary">Learn More</button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

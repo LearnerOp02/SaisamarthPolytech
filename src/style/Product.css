@@ -23,3 +23,33 @@
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+.product-card {
+  opacity: 0; /* Initially hide cards */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+  transform: translateY(20px); /* Initial offset */
+}
+
+.product-card.visible {
+  opacity: 1; /* Show the card when visible */
+  transform: translateY(0); /* Reset the offset */
+}
+
+.product-card .card-img-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.product-card .card-img-top {
+  object-fit: cover;
+  height: 100%;
+}
+
+.product-card .card-body {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .product-card {
+    margin-bottom: 20px; /* Space out product cards on small screens */
+  }
+}

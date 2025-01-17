@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/Product.css";
 
@@ -54,6 +54,23 @@ const Products = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll(".product-card");
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add("visible");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run on load in case cards are already in view
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="container my-5">
       {/* Page Header */}
@@ -69,7 +86,7 @@ const Products = () => {
         {products.map((product, index) => (
           <div className="col-md-6 col-lg-3" key={index}>
             <Link to={product.path} className="text-decoration-none">
-              <div className="card h-100 shadow border-0">
+              <div className="card h-100 shadow border-0 product-card">
                 <div className="card-img-container">
                   <img
                     src={product.img}
@@ -90,7 +107,6 @@ const Products = () => {
       </div>
 
       {/* Footer */}
-     
     </div>
   );
 };

@@ -6,43 +6,43 @@ const Application = () => {
   const sectors = [
     {
       name: "Hospital",
-      imgSrc: "https://concrete-floors.com.au/wp-content/uploads/2022/07/Hospital-Flooting.png",
+      imgSrc: "https://www.saisamarthpolytech.com/images/hospital.jpg",
       description: "Ensuring sterile environments for healthcare services.",
     },
     {
       name: "Textile",
-      imgSrc: "https://e7.pngegg.com/pngimages/981/248/png-clipart-wood-flooring-hardwood-wood-building-textile.png",
+      imgSrc: "https://www.saisamarthpolytech.com/images/tex.jpg",
       description:
         "Maintaining clean and durable flooring for textile manufacturing.",
     },
     {
       name: "Automobile",
-      imgSrc: "https://via.placeholder.com/400x300?text=Automobile", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/auto.jpg",
       description: "Supporting industrial flooring for automobile production.",
     },
     {
       name: "Pharmaceutical",
-      imgSrc: "https://via.placeholder.com/400x300?text=Pharmaceutical", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/pharma.jpg",
       description: "Sterile and clean environments for pharmaceutical labs.",
     },
     {
       name: "Medical",
-      imgSrc: "https://via.placeholder.com/400x300?text=Medical", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/medi.jpg",
       description: "Clean and safe surfaces for medical facilities.",
     },
     {
       name: "Warehouse",
-      imgSrc: "https://via.placeholder.com/400x300?text=Warehouse", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/warehouse.jpg",
       description: "Durable flooring for large warehouse spaces.",
     },
     {
       name: "Parking",
-      imgSrc: "https://via.placeholder.com/400x300?text=Parking", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/parking.jpg",
       description: "Strong and resistant flooring for parking areas.",
     },
     {
       name: "Construction",
-      imgSrc: "https://via.placeholder.com/400x300?text=Construction", // Update with correct image URL
+      imgSrc: "https://www.saisamarthpolytech.com/images/construction.jpg",
       description: "Safe and resilient surfaces for construction zones.",
     },
   ];
@@ -67,8 +67,8 @@ const Application = () => {
   return (
     <div className="application py-5">
       <div className="container">
-        <h2 className="title text-dark text-center">Industries We Serve</h2>
-        <p className="subtitle text-center">
+        <h2 className="title">Industries We Serve</h2>
+        <p className="subtitle">
           We proudly support a diverse range of industries with high-quality,
           durable flooring solutions tailored to meet the unique demands of each
           sector.
@@ -83,6 +83,7 @@ const Application = () => {
                     src={sector.imgSrc}
                     className="card-img-top sector-image"
                     alt={sector.name}
+                    loading="lazy" // Improve performance with lazy loading
                   />
                 </div>
                 <div className="card-overlay">
