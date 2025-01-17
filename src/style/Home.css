@@ -51,3 +51,39 @@
   padding: 20px;
   border-radius: 10px;
 }
+.slider-section .carousel-caption {
+  bottom: 20%;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about-us img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-us img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.leadership img {
+  border: 5px solid #007bff;
+}
+
+.cta-section {
+  background-color: #f5f5dc; /* Beige background */
+}
+
+.cta-section .btn {
+  background-color: #007bff;
+  border: none;
+}
+
+.cta-section .btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+}

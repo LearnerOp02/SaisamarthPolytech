@@ -1,70 +1,76 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/Home.css";
 
 const Home = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // Rotating banner images
+  const bannerImages = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD71mSLIUzrRuKmq6Rn2R24IM22pSuAjwdtg&s",
+    "https://w7.pngwing.com/pngs/551/467/png-transparent-businessperson-small-business-business-plan-advertising-business-service-people-business-thumbnail.png",
+    "https://png.pngtree.com/png-vector/20231214/ourmid/pngtree-stylish-man-advertising-holiday-shopping-on-red-backdrop-png-image_11035797.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTjn3B0eecR2nYzdAOo80ozxZTQIlRpyFHOA&s",
+    "https://w7.pngwing.com/pngs/364/938/png-transparent-businessperson-thumb-signal-advertising-company-business-company-hand-service-thumbnail.png",
+  ];
+
+  // Rotate images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % bannerImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, [bannerImages.length]);
+
   return (
-    <div className="home-container">
-      {/* Image Slider Section */}
-      <section className="slider-section">
-        <div id="carouselExample" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-          <div className="carousel-inner">
-            {[
-              "https://via.placeholder.com/1920x800?text=Welcome+to+Saisamarth",
-              "https://via.placeholder.com/1920x800?text=Innovative+Cleanroom+Solutions",
-              "https://via.placeholder.com/1920x800?text=Delivering+Excellence",
-              "https://via.placeholder.com/1920x800?text=Client+Focused+Approach",
-              "https://via.placeholder.com/1920x800?text=Building+Your+Future",
-            ].map((image, index) => (
-              <div
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
-                key={index}
-              >
-                <img
-                  src={image}
-                  className="d-block w-100"
-                  alt={`Slide ${index + 1}`}
-                  style={{ height: "80vh", objectFit: "cover" }}
-                />
-                <div className="carousel-caption d-none d-md-block">
-                  <h2 className="display-4 text-white font-weight-bold">Welcome to Saisamarth Polytech Pvt. Ltd.</h2>
-                  <p className="lead text-white">
-                    Delivering excellence in cleanroom finishing solutions with cutting-edge polymer technologies.
-                  </p>
-                  <a href="#about-us" className="btn btn-light btn-lg mt-3">
-                    Explore Our Expertise
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
+    <div className="home-container" style={{ backgroundColor: "#f5f5dc" }}>
+      {/* Rotating Banner Section */}
+      <section className="rotating-banner d-flex justify-content-center mb-4">
+        <div
+          className="shadow"
+          style={{
+            backgroundImage: `url(${bannerImages[currentImage]})`,
+            width: "1400px", // Adjust the width for smaller size
+            height: "250px", // Adjust the height for a concise banner
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            borderRadius: "10px",
+          }}
+        ></div>
+      </section>
+
+      {/* Welcome Section */}
+      <section className="welcome-section text-center py-5">
+        <div className="container">
+          <h1 className="text-primary mb-4 font-weight-bold">
+            Welcome to <span className="text-dark">Saisamarth Polytech Pvt. Ltd.</span>
+          </h1>
+          <p className="lead text-dark font-weight-bold mb-4">
+            At <span className="text-primary">Saisamarth Polytech Pvt. Ltd.</span>, we pride ourselves on being leaders in delivering 
+            advanced cleanroom finishing solutions. With over 20 years of 
+            expertise, we are committed to providing innovative and reliable 
+            polymer technologies tailored for diverse industries such as 
+            pharmaceuticals, healthcare, and food processing.
+          </p>
+          <p className="text-secondary lead">
+            Our mission is to enhance industry standards by offering exceptional 
+            quality, cutting-edge innovation, and client-centric solutions. We 
+            aim to be your trusted partner in creating state-of-the-art cleanroom 
+            environments that stand the test of time.
+          </p>
+          <a href="#about-us" className="btn btn-primary btn-lg shadow">
+            Explore Our Expertise
+          </a>
         </div>
       </section>
 
       {/* About Us Section */}
       <section className="about-us py-5" id="about-us">
         <div className="container">
-          <h2 className="text-center text-dark mb-4">About Us</h2>
+          <h2 className="text-center text-primary mb-4 text-dark">About Us</h2>
           <div className="row align-items-center">
             <div className="col-md-6">
               <img
@@ -74,13 +80,16 @@ const Home = () => {
               />
             </div>
             <div className="col-md-6">
-              <p className="text-dark">
-                With over 20 years of expertise, we specialize in epoxy and polymer treatments for cleanroom environments. 
-                Our solutions are trusted by leading pharmaceutical, healthcare, and food industry clients, delivering both 
-                innovation and reliability.
+              <p className="text-dark lead">
+                With over 20 years of expertise, we specialize in epoxy and
+                polymer treatments for cleanroom environments. Our solutions are
+                trusted by leading pharmaceutical, healthcare, and food industry
+                clients, delivering both innovation and reliability.
               </p>
               <Link to="/aboutus">
-                <button className="btn btn-primary mt-3">Learn More</button>
+                <button className="btn btn-primary mt-3 btn-lg shadow">
+                  Learn More
+                </button>
               </Link>
             </div>
           </div>
@@ -90,7 +99,7 @@ const Home = () => {
       {/* Leadership Section */}
       <section className="leadership text-center py-5">
         <div className="container">
-          <h2 className="text-dark mb-4">Our Leadership</h2>
+          <h2 className="text-primary mb-4 text-dark">Our Leadership</h2>
           <div className="row justify-content-center">
             <div className="col-md-4">
               <img
@@ -98,9 +107,10 @@ const Home = () => {
                 alt="Atulkumar Patil"
                 className="img-fluid rounded-circle shadow-lg mb-4"
               />
-              <p className="text-dark">
-                Under the visionary leadership of our Director, Mr. Atulkumar Patil, we are committed to delivering exceptional quality 
-                and ensuring client satisfaction at every step.
+              <p className="text-dark lead">
+                Under the visionary leadership of our Director, Mr. Atulkumar
+                Patil, we are committed to delivering exceptional quality and
+                ensuring client satisfaction at every step.
               </p>
             </div>
           </div>
@@ -108,13 +118,17 @@ const Home = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="cta-section text-center py-5 bg-light">
+      <section className="cta-section text-center py-4">
         <div className="container">
           <h2 className="font-weight-bold text-dark">Let's Build Together</h2>
           <p className="lead mb-4 text-dark">
-            We specialize in cleanroom finishing solutions. Let's discuss your next project and take it to the next level.
+            We specialize in cleanroom finishing solutions. Let's discuss your
+            next project and take it to the next level.
           </p>
-          <a href="mailto:info@saisamarthpolytech.com" className="btn btn-primary btn-lg">
+          <a
+            href="mailto:info@saisamarthpolytech.com"
+            className="btn btn-primary btn-lg shadow"
+          >
             Get in Touch
           </a>
         </div>
