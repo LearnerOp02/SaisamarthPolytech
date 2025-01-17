@@ -17,6 +17,7 @@ import EpoxyCovings from "./page/Epoxy";
 import FoodGradeCoating from "./page/Food";
 import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
+import { AiOutlineRobot } from "react-icons/ai"; // Import AI icon from react-icons
 
 function App() {
   const [showChatbot, setShowChatbot] = useState(false); // Chatbot visibility state
@@ -46,21 +47,35 @@ function App() {
       </Routes>
       <Footer />
 
-      {/* Chatbot toggle button */}
-      <button
-        className="btn btn-primary position-fixed"
-        style={{ bottom: "20px", right: "20px", zIndex: 1000 }}
+      {/* Chatbot toggle icon */}
+      <div
+        className="position-fixed"
+        style={{
+          bottom: "20px",
+          right: "20px",
+          zIndex: 1000,
+          cursor: "pointer",
+          backgroundColor: "white",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+        }}
         onClick={toggleChatbot}
+        title={showChatbot ? "Close Chatbot" : "Open Chatbot"}
       >
-        {showChatbot ? "Close Chatbot" : "Chat with Us"}
-      </button>
+        <AiOutlineRobot size={30} color="#007bff" /> {/* AI Icon */}
+      </div>
 
       {/* Chatbot iframe */}
       {showChatbot && (
         <div
           className="position-fixed"
           style={{
-            bottom: "70px",
+            bottom: "90px",
             right: "20px",
             width: "350px",
             height: "500px",
