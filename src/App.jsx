@@ -17,7 +17,6 @@ import EpoxyCovings from "./page/Epoxy";
 import FoodGradeCoating from "./page/Food";
 import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
-import { AiOutlineRobot } from "react-icons/ai"; // Import AI icon from react-icons
 
 function App() {
   const [showChatbot, setShowChatbot] = useState(false); // Chatbot visibility state
@@ -47,7 +46,7 @@ function App() {
       </Routes>
       <Footer />
 
-      {/* Chatbot toggle icon */}
+      {/* Chatbot toggle icon with image */}
       <div
         className="position-fixed"
         style={{
@@ -67,7 +66,15 @@ function App() {
         onClick={toggleChatbot}
         title={showChatbot ? "Close Chatbot" : "Open Chatbot"}
       >
-        <AiOutlineRobot size={30} color="#007bff" /> {/* AI Icon */}
+        <img
+          src="https://static.vecteezy.com/system/resources/thumbnails/025/271/424/small_2x/robot-chatbot-generative-ai-free-png.png"
+          alt="Chatbot"
+          style={{
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+          }}
+        />
       </div>
 
       {/* Chatbot iframe */}
