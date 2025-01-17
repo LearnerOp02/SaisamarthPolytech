@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./component/Footer";
@@ -19,6 +19,12 @@ import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
 
 function App() {
+  const [showChatbot, setShowChatbot] = useState(false); // Chatbot visibility state
+
+  const toggleChatbot = () => {
+    setShowChatbot(!showChatbot); // Toggle chatbot visibility
+  };
+
   return (
     <div className="App">
       <Navbar />
@@ -39,14 +45,41 @@ function App() {
         <Route path="/Durable" element={<ExteriorWallSystem />} />
       </Routes>
       <Footer />
-      {/* Add the Chatbot iframe globally */}
-      <iframe
-        src="https://www.chatbase.co/chatbot-iframe/TpoSPHBgtKbBIhhTAmIDQ"
-        width="100%"
-        style={{ height: "100%", minHeight: "700px", position: "fixed", bottom: "0", right: "0" }}
-        frameBorder="0"
-        title="Chatbot"
-      ></iframe>
+
+      {/* Chatbot toggle button */}
+      <button
+        className="btn btn-primary position-fixed"
+        style={{ bottom: "20px", right: "20px", zIndex: 1000 }}
+        onClick={toggleChatbot}
+      >
+        {showChatbot ? "Close Chatbot" : "Chat with Us"}
+      </button>
+
+      {/* Chatbot iframe */}
+      {showChatbot && (
+        <div
+          className="position-fixed"
+          style={{
+            bottom: "70px",
+            right: "20px",
+            width: "350px",
+            height: "500px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+            zIndex: 1000,
+            backgroundColor: "white",
+            borderRadius: "10px",
+            overflow: "hidden",
+          }}
+        >
+          <iframe
+            src="https://www.chatbase.co/chatbot-iframe/TpoSPHBgtKbBIhhTAmIDQ"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            title="Chatbot"
+          ></iframe>
+        </div>
+      )}
     </div>
   );
 }
