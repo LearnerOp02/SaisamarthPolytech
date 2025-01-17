@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";  // Explicitly import React
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./component/Footer";
@@ -36,11 +36,12 @@ function App() {
         <Route path="/hygine" element={<HygienicWallProtection />} />
         <Route path="/wall" element={<ChemicalProtection />} />
         <Route path="/Epoxy" element={<EpoxyCovings />} />
-        <Route path="/Food" element={<FoodGradeCoating />} />\
+        <Route path="/Food" element={<FoodGradeCoating />} />
         <Route path="/Flexible" element={<FlexibleSealants />} />
         <Route path="/Durable" element={<ExteriorWallSystem />} />
       </Routes>
       <Footer />
+    
     </div>
   );
 }
