@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"; // Import useEffect
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./component/Footer";
@@ -19,31 +19,11 @@ import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
 
 function App() {
-  // Embed chatbot script dynamically
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.chatbase.co/embed.min.js"; // Chatbot source URL
-    script.id = "aron61ax8mt303a3tbkvg8shv119by0n"; // Replace with your Chatbot ID
-    script.async = true;
-    script.onload = () => {
-      console.log("Chatbot script loaded successfully!");
-    };
-    document.body.appendChild(script);
-
-    // Cleanup script on unmount
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/saisamarth-web" element={<Home />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/clients" element={<Client />} />
         <Route path="/application" element={<Application />} />
@@ -59,6 +39,14 @@ function App() {
         <Route path="/Durable" element={<ExteriorWallSystem />} />
       </Routes>
       <Footer />
+      {/* Add the Chatbot iframe globally */}
+      <iframe
+        src="https://www.chatbase.co/chatbot-iframe/TpoSPHBgtKbBIhhTAmIDQ"
+        width="100%"
+        style={{ height: "100%", minHeight: "700px", position: "fixed", bottom: "0", right: "0" }}
+        frameBorder="0"
+        title="Chatbot"
+      ></iframe>
     </div>
   );
 }
