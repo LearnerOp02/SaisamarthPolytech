@@ -3,13 +3,21 @@ import "../style/AboutUs.css"; // Import external CSS
 import about from "./Images/about.png";
 import team from "./Images/team.png";
 import tech from "./Images/tech.png";
+import hyg from "./Images/hyg.jpg";
+import pre from "./Images/pre.jpg";
+import tai from "./Images/tai.jpg";
 
 const AboutUs = () => {
   return (
-    <div className="about-us-page" style={{ backgroundColor: '#F5F5DC' }}> {/* Beige background */}
+    <div className="about-us-page" style={{ backgroundColor: "#F5F5DC" }}>
+      {" "}
+      {/* Beige background */}
       {/* Hero Section */}
       <div className="hero-section-container">
-        <section className="hero-section" style={{ backgroundColor: '#F5F5DC' }}>
+        <section
+          className="hero-section"
+          style={{ backgroundColor: "#F5F5DC" }}
+        >
           <div className="container text-center text-white">
             <h1 className="display-4 font-weight-bold">About Us</h1>
             <p className="lead mb-4">
@@ -18,13 +26,15 @@ const AboutUs = () => {
           </div>
         </section>
       </div>
-
       {/* About Us Section */}
-      <div className="about-us-container py-5" style={{ backgroundColor: '#F5F5DC' }}>
+      <div
+        className="about-us-container py-5"
+        style={{ backgroundColor: "#F5F5DC" }}
+      >
         <div className="container" id="about-us">
           <div className="row align-items-center">
             <div className="col-md-6">
-              <h2 className="font-weight-bold text-primary mb-4">Who We Are</h2>
+              <h2 className="font-weight-bold mb-4" style={{ color: "#333" }}>Who We Are</h2>
               <p className="lead text-dark">
                 <strong>We</strong> are leading Engineers & Contractors working
                 in the field of clean room finishing services, with over two
@@ -55,9 +65,11 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
       {/* Our Team Section */}
-      <div className="our-team-container py-5" style={{ backgroundColor: '#F5F5DC' }}>
+      <div
+        className="our-team-container py-5"
+        style={{ backgroundColor: "#F5F5DC" }}
+      >
         <div className="container" id="our-team">
           <div className="row align-items-center">
             <div className="col-md-6 text-center">
@@ -68,14 +80,14 @@ const AboutUs = () => {
               />
             </div>
             <div className="col-md-6">
-              <h2 className="font-weight-bold text-primary mb-4">
+              <h2 className="font-weight-bold mb-4" style={{ color: "#333" }}>
                 Our Expert Team
               </h2>
               <p className="lead text-dark">
                 Saisamarth Polytech Pvt. Ltd. is an industry-certified service
                 provider, and our strength lies in our fully qualified team. Our
                 promoter and director, Mr. Atulkumar Patil, is well-known in the
-                industry, with 18 years of experience in flooring and coatings.
+                industry, with 25 years of experience in flooring and coatings.
                 He has worked with all major manufacturers of Epoxy/Polymer
                 products.
               </p>
@@ -88,11 +100,13 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
       {/* Our Technology Section */}
-      <div className="technology-container py-5" style={{ backgroundColor: '#F5F5DC' }}>
+      <div
+        className="technology-container py-5"
+        style={{ backgroundColor: "#F5F5DC" }}
+      >
         <div className="container" id="technology">
-          <h2 className="font-weight-bold text-center text-primary mb-5">
+          <h2 className="font-weight-bold text-center mb-5" style={{ color: "#333" }}>
             Four-Dimensional Technology
           </h2>
           <div className="row justify-content-center">
@@ -107,7 +121,10 @@ const AboutUs = () => {
           <div className="row mt-5">
             {/* First Row */}
             <div className="col-md-6 d-flex">
-              <div className="technology-card p-4 mb-4 w-100" style={{ backgroundColor: '#FAFAD2' }}>
+              <div
+                className="technology-card p-4 mb-4 w-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
                 <h4 className="font-weight-bold text-dark mb-3">
                   Right Material Selection
                 </h4>
@@ -119,7 +136,10 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="col-md-6 d-flex">
-              <div className="technology-card p-4 mb-4 w-100" style={{ backgroundColor: '#FAFAD2' }}>
+              <div
+                className="technology-card p-4 mb-4 w-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
                 <h4 className="font-weight-bold text-dark mb-3">
                   Right Application Method
                 </h4>
@@ -134,7 +154,10 @@ const AboutUs = () => {
             </div>
             {/* Second Row */}
             <div className="col-md-6 d-flex">
-              <div className="technology-card p-4 mb-4 w-100" style={{ backgroundColor: '#FAFAD2' }}>
+              <div
+                className="technology-card p-4 mb-4 w-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
                 <h4 className="font-weight-bold text-dark mb-3">
                   Cost-Effective Solutions
                 </h4>
@@ -147,7 +170,10 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="col-md-6 d-flex">
-              <div className="technology-card p-4 mb-4 w-100" style={{ backgroundColor: '#FAFAD2' }}>
+              <div
+                className="technology-card p-4 mb-4 w-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
                 <h4 className="font-weight-bold text-dark mb-3">Time Frame</h4>
                 <p className="text-muted">
                   Our project planning ensures that we complete the work within
@@ -162,21 +188,28 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
       {/* What We Provide Section */}
-      <div className="services-container py-5" style={{ backgroundColor: '#F5F5DC' }}>
+      <div
+        className="services-container py-5"
+        style={{ backgroundColor: "#F5F5DC" }}
+      >
         <section className="container" id="services">
-          <h2 className="font-weight-bold text-center text-primary mb-5">
+          <h2 className="font-weight-bold text-center mb-5" style={{ color: "#333" }}>
             What We Provide
           </h2>
           <div className="row">
             <div className="col-md-4 mb-4">
-              <div className="service-card text-center shadow p-4 rounded" style={{ backgroundColor: '#FAFAD2' }}>
-                <img
-                  src="https://5.imimg.com/data5/ANDROID/Default/2024/11/462550190/CO/BV/NL/40344453/product-jpeg-500x500.jpg"
-                  alt="Service 1"
-                  className="img-fluid rounded mb-3"
-                />
+              <div
+                className="service-card text-center shadow p-4 rounded h-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
+                <div className="service-img-container">
+                  <img
+                    src={pre}
+                    alt="Service 1"
+                    className="img-fluid rounded mb-3"
+                  />
+                </div>
                 <h5 className="font-weight-bold text-dark">
                   Premium Polymer Treatments
                 </h5>
@@ -187,12 +220,17 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="col-md-4 mb-4">
-              <div className="service-card text-center shadow p-4 rounded" style={{ backgroundColor: '#FAFAD2' }}>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsd8ole9G1UjZnCnzpY1WQ2Jg3xR3p1lpb4g&s"
-                  alt="Service 2"
-                  className="img-fluid rounded mb-3"
-                />
+              <div
+                className="service-card text-center shadow p-4 rounded h-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
+                <div className="service-img-container">
+                  <img
+                    src={tai}
+                    alt="Service 2"
+                    className="img-fluid rounded mb-3"
+                  />
+                </div>
                 <h5 className="font-weight-bold text-dark">
                   Tailored Finishing Solutions
                 </h5>
@@ -203,12 +241,17 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="col-md-4 mb-4">
-              <div className="service-card text-center shadow p-4 rounded" style={{ backgroundColor: '#FAFAD2' }}>
-                <img
-                  src="https://5.imimg.com/data5/SELLER/Default/2023/6/318692909/CH/ZR/GS/28604821/hygienic-coating-services-500x500.jpeg"
-                  alt="Service 3"
-                  className="img-fluid rounded mb-3"
-                />
+              <div
+                className="service-card text-center shadow p-4 rounded h-100"
+                style={{ backgroundColor: "#FAFAD2" }}
+              >
+                <div className="service-img-container">
+                  <img
+                    src={hyg}
+                    alt="Service 3"
+                    className="img-fluid rounded mb-3"
+                  />
+                </div>
                 <h5 className="font-weight-bold text-dark">
                   Hygienic Coatings
                 </h5>

@@ -3,7 +3,7 @@
     background: var(--navbar-bg); /* Same background as the navbar */
     padding: 2.5rem 0;
     color: #fff; /* White text for better contrast */
-    font-family: "Open Sans", sans-serif; /* Web-friendly font */
+    font-family: "Poppins", sans-serif;
     text-align: center; /* Improved alignment for smaller screens */
     transition: background-color 0.4s ease, padding 0.4s ease;
 }

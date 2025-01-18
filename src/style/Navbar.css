@@ -1,67 +1,46 @@
 :root {
-  --navbar-bg: linear-gradient(145deg, #d35400 0%, hsl(32, 100%, 50%) 100%); /* Dark orange gradient */
-  --navbar-scrolled-bg: rgba(211, 84, 0, 0.98); /* Slightly transparent dark orange */
-  --accent-color: #ffc107; /* Accent color retained for hover effects */
-  --text-color: #fff; /* White text for contrast on dark background */
-  --hover-bg: rgba(255, 255, 255, 0.1); /* Subtle light hover effect */
+  --navbar-bg: linear-gradient(145deg, #d35400 0%, hsl(32, 100%, 50%) 100%);
+  --navbar-scrolled-bg: rgba(211, 84, 0, 0.98);
+  --accent-color: #ffc107;
+  --text-color: #fff;
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --transition-speed: 0.4s;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Base Styles */
 .navbar {
   background: var(--navbar-bg);
-  color: var(--text-color); /* Use white text */
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
   padding: 0.75rem 1.5rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
   position: sticky;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
-  box-shadow: 
-    0 4px 30px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.nav-link {
-  color: var(--text-color) !important; /* White text */
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.nav-link:hover {
-  color: var(--text-color) !important; /* Keep text white on hover */
-  background: var(--hover-bg); /* Subtle light hover background */
-  box-shadow: 
-    0 4px 15px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--accent-color); /* Add accent-colored border */
-}
-
-.nav-link.active {
-  background: rgba(255, 255, 255, 0.15); /* Light highlight for active link */
-  color: var(--text-color) !important; /* Keep text white */
-  box-shadow: 
-    0 4px 15px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(0, 0, 0, 0.05);
-  font-weight: 600; /* Slightly bolder for active link */
-}
-
+/* Navbar Brand */
 .navbar-brand {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-color) !important;
+  color: var(--text-color);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navbar-logo {
-  width: 45px; /* Original size retained */
-  height: 45px; /* Original size retained */
+  width: 45px;
+  height: 45px;
   object-fit: contain;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+              filter var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
@@ -70,12 +49,49 @@
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)) brightness(1.1);
 }
 
+/* Nav Links */
+.nav-link {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border-radius: var(--border-radius);
+}
+
+.nav-link:hover {
+  background: var(--hover-bg);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+              inset 0 1px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--accent-color);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+              inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
 /* Mobile Styles */
 @media (max-width: 991px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .navbar-logo {
+    width: 35px;
+    height: 35px;
+  }
+
   .nav-link {
-    padding: 0.75rem 1rem !important;
+    padding: 0.75rem 1rem;
     text-align: center;
-    border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
   }
 
@@ -83,4 +99,36 @@
     background: var(--hover-bg);
     border: 1px solid var(--accent-color);
   }
+
+  .navbar-collapse {
+    background: var(--navbar-bg);
+    margin-top: 0.5rem;
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+  }
+}
+
+/* Smooth Scrolling and Interaction Enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Ensure content visibility on all devices */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
 }

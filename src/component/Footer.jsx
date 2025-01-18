@@ -24,18 +24,31 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h5 className="text-uppercase text-dark">Explore</h5>
             <ul className="list-unstyled">
-              {["Home", "About Us", "Contact Us", "Clients", "Application"].map(
-                (item, index) => (
-                  <li key={index} className="mb-2">
-                    <Link
-                      to={`/${item.toLowerCase().replace(/ /g, "")}`}
-                      className="footer-link text-light"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              <li className="mb-2">
+                <Link to="/" className="footer-link text-light">
+                  Home
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/aboutus" className="footer-link text-light">
+                  About Us
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/contactus" className="footer-link text-light">
+                  Contact Us
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/clients" className="footer-link text-light">
+                  Clients
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/application" className="footer-link text-light">
+                  Application
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -68,11 +81,17 @@ const Footer = () => {
           <p className="text-light mb-0">
             &copy; {new Date().getFullYear()} Saisamarth Polytech Pvt. Ltd. All
             Rights Reserved.
-            <Link to="/privacy" className="footer-link text-warning ms-2 text-dark">
+            <Link
+              to="/privacy"
+              className="footer-link text-warning ms-2 text-dark"
+            >
               Privacy Policy
             </Link>{" "}
             |
-            <Link to="/terms" className="footer-link text-warning ms-2 text-dark">
+            <Link
+              to="/terms"
+              className="footer-link text-warning ms-2 text-dark"
+            >
               Terms of Service
             </Link>
           </p>

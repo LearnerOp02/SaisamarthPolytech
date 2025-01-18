@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
 import React, { useRef, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -50,13 +50,12 @@ const ContactUs = () => {
         <Col xs={12}>
           <div className="map-container fade-in-section shadow">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4993866080677!2d72.95142017781153!3d19.173378635771904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b912dfbe021d%3A0x1549238dfcb8009f!2sUnion%20Bank%20Of%20India!5e0!3m2!1sen!2sin!4v1721754958442!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4993866080677!2d72.95142017781153!3d19.173378735771904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b912dfbe021d%3A0x1549238dfcb8009f!2sUnion%20Bank%20Of%20India!5e0!3m2!1sen!2sin!4v1721754958442!5m2!1sen!2s"
               width="100%"
               height="450"
               aria-hidden="false"
               tabIndex="0"
               aria-label="Location map"
-              loading="lazy"
             ></iframe>
           </div>
         </Col>
@@ -65,7 +64,7 @@ const ContactUs = () => {
       {/* Address and Form Section */}
       <Row className="align-items-start fade-in-section">
         <Col md={6} className="mb-4 mb-md-0">
-          <h3 className="text-center mb-4">Our Office</h3>
+          <h3 className="address-title text-center mb-4">Our Office</h3>
           <div className="address-section text-center text-md-start">
             <p>
               <FaLocationDot className="me-2 text-primary" />  213, 2nd Floor, Sai Arcade,<br />
