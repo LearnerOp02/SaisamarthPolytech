@@ -97,7 +97,6 @@ function App() {
             src="https://www.chatbase.co/chatbot-iframe/TpoSPHBgtKbBIhhTAmIDQ"
             width="100%"
             height="100%"
-            frameBorder="0"
             title="Chatbot"
           ></iframe>
         </div>

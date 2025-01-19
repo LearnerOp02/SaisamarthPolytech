@@ -1,55 +1,62 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/Product.css";
+import hyg from "./Images/hyg.jpg";
+import epoxy from "./Images/epoxy.jpg";
+import floor from "./Images/floor.jpg";
+import seal from "./Images/seal.jpg";
+import paint from "./Images/paint.jpeg";
+import a5 from "./Images/a5.jpg";
+import chemical from "./Images/chemical.jpg";
 
 const Products = () => {
   const products = [
     {
       title: "Floor Protection System",
       description: "Durable solutions for floor protection.",
-      img: "https://w7.pngwing.com/pngs/907/249/png-transparent-brown-parquet-flooring-wood-flooring-wall-tile-laminate-flooring-wood-floor-angle-household-rectangle-thumbnail.png",
+      img: floor,
       path: "/protection",
     },
     {
       title: "Corrosion Protection Systems",
       description: "Advanced protection against corrosion.",
-      img: "https://eoncoat.com/wp-content/uploads/2016/12/719x488-8.jpg",
+      img: "https://tse2.mm.bing.net/th?id=OIP.vfWawzYUhOexUUe7Rc1oAQHaE7&w=1255&h=836&rs=1&pid=ImgDetMain",
       path: "/corrosion",
     },
     {
       title: "Hygienic Internal Wall Protection System",
       description: "Ensures hygiene and durability for walls.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: a5,
       path: "/hygine",
     },
     {
       title: "Speciality Chemical Protection Systems",
       description: "Chemical-resistant solutions for industries.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: chemical,
       path: "/wall",
     },
     {
       title: "Epoxy Covings",
       description: "Seamless epoxy covings for various applications.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: epoxy,
       path: "/Epoxy",
     },
     {
       title: "Food Grade Coating",
       description: "Safe and hygienic coatings for food industries.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: hyg,
       path: "/Food",
     },
     {
       title: "Flexible Sealants",
       description: "High-quality sealants for flexible solutions.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: seal,
       path: "/Flexible",
     },
     {
       title: "Durable Exterior Wall System",
       description: "Weather-resistant and durable wall systems.",
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtmUaA1V3l0u4nHnMQ4I5uu7Zn1a1L4LkB5tbQSPhncF5TX9PyHFjA_GpQi1ukUVeR4Q&usqp=CAU",
+      img: paint,
       path: "/Durable",
     },
   ];

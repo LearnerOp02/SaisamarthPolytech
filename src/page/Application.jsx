@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import "../style/Application.css";
+import app1 from './Images/app1.jpg';
 
 const Application = () => {
   const sectors = [
@@ -26,9 +27,10 @@ const Application = () => {
       description: "Sterile and clean environments for pharmaceutical labs.",
     },
     {
-      name: "Medical",
-      imgSrc: "https://www.saisamarthpolytech.com/images/medi.jpg",
-      description: "Clean and safe surfaces for medical facilities.",
+      name: "Cold Storage",
+      imgSrc: app1,
+      description:
+        "Specialized flooring solutions for temperature-controlled environments, ensuring durability and safety in cold storage facilities.",
     },
     {
       name: "Warehouse",

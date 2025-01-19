@@ -221,7 +221,6 @@
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2.5rem;
@@ -245,6 +244,7 @@
     font-size: 1rem;
   }
 }
+
 .bg-beige {
   background-color: hsl(60, 53%, 86%); /* Beige color */
 }

@@ -10,14 +10,9 @@ import tai from "./Images/tai.jpg";
 const AboutUs = () => {
   return (
     <div className="about-us-page" style={{ backgroundColor: "#F5F5DC" }}>
-      {" "}
-      {/* Beige background */}
       {/* Hero Section */}
       <div className="hero-section-container">
-        <section
-          className="hero-section"
-          style={{ backgroundColor: "#F5F5DC" }}
-        >
+        <section className="hero-section" style={{ backgroundColor: "#F5F5DC" }}>
           <div className="container text-center text-white">
             <h1 className="display-4 font-weight-bold">About Us</h1>
             <p className="lead mb-4">
@@ -26,11 +21,9 @@ const AboutUs = () => {
           </div>
         </section>
       </div>
+
       {/* About Us Section */}
-      <div
-        className="about-us-container py-5"
-        style={{ backgroundColor: "#F5F5DC" }}
-      >
+      <div className="about-us-container py-5" style={{ backgroundColor: "#F5F5DC" }}>
         <div className="container" id="about-us">
           <div className="row align-items-center">
             <div className="col-md-6">
@@ -65,11 +58,9 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
       {/* Our Team Section */}
-      <div
-        className="our-team-container py-5"
-        style={{ backgroundColor: "#F5F5DC" }}
-      >
+      <div className="our-team-container py-5" style={{ backgroundColor: "#F5F5DC" }}>
         <div className="container" id="our-team">
           <div className="row align-items-center">
             <div className="col-md-6 text-center">
@@ -100,11 +91,9 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
       {/* Our Technology Section */}
-      <div
-        className="technology-container py-5"
-        style={{ backgroundColor: "#F5F5DC" }}
-      >
+      <div className="technology-container py-5" style={{ backgroundColor: "#F5F5DC" }}>
         <div className="container" id="technology">
           <h2 className="font-weight-bold text-center mb-5" style={{ color: "#333" }}>
             Four-Dimensional Technology
@@ -188,11 +177,9 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
       {/* What We Provide Section */}
-      <div
-        className="services-container py-5"
-        style={{ backgroundColor: "#F5F5DC" }}
-      >
+      <div className="services-container py-5" style={{ backgroundColor: "#F5F5DC" }}>
         <section className="container" id="services">
           <h2 className="font-weight-bold text-center mb-5" style={{ color: "#333" }}>
             What We Provide
