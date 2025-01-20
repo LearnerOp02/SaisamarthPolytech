@@ -20,32 +20,10 @@ const Home = () => {
         className="carousel slide"
         data-bs-ride="carousel"
       >
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={five} className="d-block w-100" alt="Health Industry" />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption">
               <h5>Health Industry</h5>
               <p>
                 Providing cutting-edge solutions for healthcare environments.
@@ -58,14 +36,14 @@ const Home = () => {
               className="d-block w-100"
               alt="Automobile Industry"
             />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption">
               <h5>Automobile Industry</h5>
               <p>Delivering durable and high-performance flooring solutions.</p>
             </div>
           </div>
           <div className="carousel-item">
             <img src={seven} className="d-block w-100" alt="Epoxy Flooring" />
-            <div className="carousel-caption d-none d-md-block">
+            <div className="carousel-caption">
               <h5>Epoxy Flooring</h5>
               <p>
                 Ensuring seamless and hygienic flooring for industrial spaces.

@@ -5,6 +5,44 @@
   overflow-x: hidden;
 }
 
+/* Carousel Captions */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  bottom: 20px; /* Adjust position */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Adjust width for small screens */
+  max-width: 600px; /* Limit width for larger screens */
+}
+
+.carousel-caption h5 {
+  font-size: 1.25rem; /* Adjust font size for small screens */
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-size: 1rem; /* Adjust font size for small screens */
+  margin-bottom: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .carousel-caption {
+    bottom: 10px; /* Adjust position for small screens */
+    padding: 5px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 1rem; /* Smaller font size for small screens */
+  }
+
+  .carousel-caption p {
+    font-size: 0.875rem; /* Smaller font size for small screens */
+  }
+}
+
 /* Carousel Section */
 .carousel-item img {
   height: 620px;
