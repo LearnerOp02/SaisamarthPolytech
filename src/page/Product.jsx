@@ -10,6 +10,10 @@ import a5 from "./Images/a5.jpg";
 import chemical from "./Images/chemical.jpg";
 
 const Products = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  };
+
   const products = [
     {
       title: "Floor Protection System",
@@ -82,7 +86,9 @@ const Products = () => {
     <div className="container my-5">
       {/* Page Header */}
       <div className="text-center mb-5">
-        <h1 className="display-4 fw-bold text-primary text-black">Our Products</h1>
+        <h1 className="display-4 fw-bold text-primary text-black">
+          Our Products
+        </h1>
         <p className="text-secondary fs-5">
           Explore our wide range of innovative and durable solutions
         </p>
@@ -92,7 +98,11 @@ const Products = () => {
       <div className="row g-4">
         {products.map((product, index) => (
           <div className="col-md-6 col-lg-3" key={index}>
-            <Link to={product.path} className="text-decoration-none">
+            <Link
+              to={product.path}
+              className="text-decoration-none"
+              onClick={handleLinkClick}
+            >
               <div className="card h-100 shadow border-0 product-card">
                 <div className="card-img-container">
                   <img

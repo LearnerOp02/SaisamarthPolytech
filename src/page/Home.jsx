@@ -16,6 +16,7 @@ const Home = () => {
   const handleLinkClick = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
+  
   return (
     <div className="home-container">
       {/* Carousel Section */}
