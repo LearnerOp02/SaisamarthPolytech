@@ -13,6 +13,9 @@ import about from "./Images/about.png";
 import leader from "./Images/leader.jpg";
 
 const Home = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+  };
   return (
     <div className="home-container">
       {/* Carousel Section */}
@@ -112,7 +115,12 @@ const Home = () => {
                 clients, delivering both innovation and reliability.
               </p>
               <Link to="/aboutus">
-                <button className="btn btn-primary mt-3">Learn More</button>
+                <button
+                  className="btn btn-primary mt-3"
+                  onClick={handleLinkClick}
+                >
+                  Learn More
+                </button>
               </Link>
             </div>
           </div>
@@ -155,7 +163,9 @@ const Home = () => {
           </div>
           <div className="d-flex justify-content-center mt-4">
             <Link to="/clients">
-              <button className="btn btn-primary">Learn More</button>
+              <button className="btn btn-primary" onClick={handleLinkClick}>
+                Learn More
+              </button>
             </Link>
           </div>
         </div>
