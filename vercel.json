@@ -1,9 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/[^.]+",
-      "dest": "../src/app.jsx",
-      "status": 200
-    }
-  ]
-}
