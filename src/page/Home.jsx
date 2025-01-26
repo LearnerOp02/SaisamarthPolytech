@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Home.css";
-import one from "./Images/1.jpg"; // Ensure the path is correct
+import one from "./Images/1.jpg";
 import two from "./Images/2.jpg";
 import three from "./Images/3.jpg";
 import four from "./Images/4.jpg";
@@ -12,72 +12,60 @@ import seven from "./Images/pic4.png";
 import about from "./Images/about.png";
 import leader from "./Images/leader.jpg";
 
+const CarouselItem = ({ src, alt, title, description, active }) => (
+  <div className={`carousel-item ${active ? "active" : ""}`}>
+    <img src={src} className="d-block w-100" alt={alt} loading="lazy" />
+    <div className="carousel-caption">
+      <h5>{title}</h5>
+      <p>{description}</p>
+    </div>
+  </div>
+);
+
+const GalleryItem = ({ src, alt }) => (
+  <div className="col-md-3 mb-4">
+    <div className="card shadow-lg rounded">
+      <img src={src} alt={alt} className="card-img-top rounded-top" loading="lazy" />
+    </div>
+  </div>
+);
+
 const Home = () => {
   const handleLinkClick = () => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
+    window.scrollTo(0, 0);
   };
-  
+
   return (
     <div className="home-container">
       {/* Carousel Section */}
-      <div
-        id="carouselExampleCaptions"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
+      <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          <div className="carousel-item active">
-            <img src={five} className="d-block w-100" alt="Health Industry" />
-            <div className="carousel-caption">
-              <h5>Health Industry</h5>
-              <p>
-                Providing cutting-edge solutions for healthcare environments.
-              </p>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img
-              src={six}
-              className="d-block w-100"
-              alt="Automobile Industry"
-            />
-            <div className="carousel-caption">
-              <h5>Automobile Industry</h5>
-              <p>Delivering durable and high-performance flooring solutions.</p>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <img src={seven} className="d-block w-100" alt="Epoxy Flooring" />
-            <div className="carousel-caption">
-              <h5>Epoxy Flooring</h5>
-              <p>
-                Ensuring seamless and hygienic flooring for industrial spaces.
-              </p>
-            </div>
-          </div>
+          <CarouselItem
+            src={five}
+            alt="Health Industry"
+            title="Health Industry"
+            description="Providing cutting-edge solutions for healthcare environments."
+            active
+          />
+          <CarouselItem
+            src={six}
+            alt="Automobile Industry"
+            title="Automobile Industry"
+            description="Delivering durable and high-performance flooring solutions."
+          />
+          <CarouselItem
+            src={seven}
+            alt="Epoxy Flooring"
+            title="Epoxy Flooring"
+            description="Ensuring seamless and hygienic flooring for industrial spaces."
+          />
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
@@ -86,12 +74,10 @@ const Home = () => {
       <section className="welcome-section text-center bg-beige py-5">
         <div className="container">
           <h1 className="welcome-title fade-in">
-            Welcome to{" "}
-            <span className="highlight">Saisamarth Polytech Pvt. Ltd.</span>
+            Welcome to <span className="highlight">Saisamarth Polytech Pvt. Ltd.</span>
           </h1>
           <p className="welcome-text fade-in">
-            Delivering excellence in cleanroom finishing solutions with
-            cutting-edge polymer technologies.
+            Delivering excellence in cleanroom finishing solutions with cutting-edge polymer technologies.
           </p>
         </div>
       </section>
@@ -106,20 +92,15 @@ const Home = () => {
                 src={about}
                 alt="About Us"
                 className="img-fluid rounded shadow-lg about-img"
+                loading="lazy"
               />
             </div>
             <div className="col-md-6">
               <p className="about-text">
-                With over 20 years of expertise, we specialize in epoxy and
-                polymer treatments for cleanroom environments. Our solutions are
-                trusted by leading pharmaceutical, healthcare, and food industry
-                clients, delivering both innovation and reliability.
+                With over 20 years of expertise, we specialize in epoxy and polymer treatments for cleanroom environments. Our solutions are trusted by leading pharmaceutical, healthcare, and food industry clients, delivering both innovation and reliability.
               </p>
               <Link to="/aboutus">
-                <button
-                  className="btn btn-primary mt-3"
-                  onClick={handleLinkClick}
-                >
+                <button className="btn btn-primary mt-3" onClick={handleLinkClick}>
                   Learn More
                 </button>
               </Link>
@@ -136,11 +117,10 @@ const Home = () => {
             src={leader}
             alt="Leader"
             className="img-fluid rounded shadow-lg leader-img"
+            loading="lazy"
           />
           <p className="leadership-text">
-            Under the visionary leadership of our Director, Mr. Atulkumar Patil,
-            we are committed to delivering exceptional quality and ensuring
-            client satisfaction at every step.
+            Under the visionary leadership of our Director, Mr. Atulkumar Patil, we are committed to delivering exceptional quality and ensuring client satisfaction at every step.
           </p>
         </div>
       </section>
@@ -151,15 +131,7 @@ const Home = () => {
           <h2 className="section-title text-center mb-5">Our Work in Action</h2>
           <div className="row">
             {[one, two, three, four].map((image, index) => (
-              <div className="col-md-3 mb-4" key={index}>
-                <div className="card shadow-lg rounded">
-                  <img
-                    src={image}
-                    alt={`Gallery Image ${index + 1}`}
-                    className="card-img-top rounded-top"
-                  />
-                </div>
-              </div>
+              <GalleryItem key={index} src={image} alt={`Gallery Image ${index + 1}`} />
             ))}
           </div>
           <div className="d-flex justify-content-center mt-4">

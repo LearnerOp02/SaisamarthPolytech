@@ -1,10 +1,27 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import "../style/Footer.css";
 
+const FooterLink = ({ to, children }) => (
+  <li className="mb-2">
+    <Link to={to} className="footer-link text-light">
+      {children}
+    </Link>
+  </li>
+);
+
+const ContactLink = ({ href, icon: Icon, children }) => (
+  <p className="mb-2">
+    <Link to={href} className="footer-contact d-flex align-items-center text-light">
+      <Icon className="me-2" /> {children}
+    </Link>
+  </p>
+);
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer bg-dark text-light">
       <div className="container py-4">
@@ -24,31 +41,11 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h5 className="text-uppercase text-dark">Explore</h5>
             <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link to="/" className="footer-link text-light">
-                  Home
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/aboutus" className="footer-link text-light">
-                  About Us
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/contactus" className="footer-link text-light">
-                  Contact Us
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/clients" className="footer-link text-light">
-                  Clients
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/application" className="footer-link text-light">
-                  Application
-                </Link>
-              </li>
+              <FooterLink to="/">Home</FooterLink>
+              <FooterLink to="/aboutus">About Us</FooterLink>
+              <FooterLink to="/contactus">Contact Us</FooterLink>
+              <FooterLink to="/clients">Clients</FooterLink>
+              <FooterLink to="/application">Application</FooterLink>
             </ul>
           </div>
 
@@ -56,22 +53,12 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h5 className="text-uppercase text-dark">Get in Touch</h5>
             <div className="contact-info">
-              <p className="mb-2">
-                <Link
-                  to="mailto:saisamarthpolytech@gmail.com"
-                  className="footer-contact d-flex align-items-center text-light"
-                >
-                  <FaEnvelope className="me-2" /> saisamarthpolytech@gmail.com
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to="tel:+919324529411"
-                  className="footer-contact d-flex align-items-center text-light"
-                >
-                  <FaPhone className="me-2" /> +91 9324529411
-                </Link>
-              </p>
+              <ContactLink href="mailto:saisamarthpolytech@gmail.com" icon={FaEnvelope}>
+                saisamarthpolytech@gmail.com
+              </ContactLink>
+              <ContactLink href="tel:+919324529411" icon={FaPhone}>
+                +91 9324529411
+              </ContactLink>
             </div>
           </div>
         </div>
@@ -79,19 +66,12 @@ const Footer = () => {
         {/* Footer Bottom Section */}
         <div className="footer-bottom text-center mt-4">
           <p className="text-light mb-0">
-            &copy; {new Date().getFullYear()} Saisamarth Polytech Pvt. Ltd. All
-            Rights Reserved.
-            <Link
-              to="/privacy"
-              className="footer-link text-warning ms-2 text-dark"
-            >
+            &copy; {currentYear} Saisamarth Polytech Pvt. Ltd. All Rights Reserved.
+            <Link to="/privacy" className="footer-link text-warning ms-2 text-dark">
               Privacy Policy
             </Link>{" "}
             |
-            <Link
-              to="/terms"
-              className="footer-link text-warning ms-2 text-dark"
-            >
+            <Link to="/terms" className="footer-link text-warning ms-2 text-dark">
               Terms of Service
             </Link>
           </p>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/Product.css";
@@ -122,8 +123,6 @@ const Products = () => {
           </div>
         ))}
       </div>
-
-      {/* Footer */}
     </div>
   );
 };

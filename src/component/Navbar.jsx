@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom"; // Use NavLink instead of Link
 import "../style/Navbar.css";
 import logo from "../assets/logo.jpg";
+import clsx from "clsx";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,11 +10,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".navbar");
-      if (window.scrollY > 50) {
-        navbar.classList.add("navbar-scrolled");
-      } else {
-        navbar.classList.remove("navbar-scrolled");
-      }
+      navbar.classList.toggle("navbar-scrolled", window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -25,9 +22,24 @@ const Navbar = () => {
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const NavItem = ({ to, children }) => (
+    <li className="nav-item">
+      <NavLink
+        className={({ isActive }) =>
+          clsx(
+            "nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation",
+            { active: isActive }
+          )
+        }
+        to={to}
+        onClick={handleLinkClick}
+      >
+        {children}
+      </NavLink>
+    </li>
+  );
 
   return (
     <nav className="navbar navbar-expand-lg text-light py-3 border-bottom border-3 border-warning animate-navbar">
@@ -44,7 +56,7 @@ const Navbar = () => {
 
         {/* Hamburger Menu */}
         <button
-          className={`navbar-toggler bg-light ${menuOpen ? "" : "collapsed"}`}
+          className={clsx("navbar-toggler bg-light", { collapsed: !menuOpen })}
           type="button"
           onClick={toggleMenu}
           aria-expanded={menuOpen}
@@ -55,90 +67,18 @@ const Navbar = () => {
 
         {/* Nav Links */}
         <div
-          className={`collapse navbar-collapse justify-content-end ${
-            menuOpen ? "show" : ""
-          }`}
+          className={clsx("collapse navbar-collapse justify-content-end", {
+            show: menuOpen,
+          })}
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/"
-                onClick={handleLinkClick}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/aboutus"
-                onClick={handleLinkClick}
-              >
-                About Us
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/contactus"
-                onClick={handleLinkClick}
-              >
-                Contact Us
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/product"
-                onClick={handleLinkClick}
-              >
-                Product
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/application"
-                onClick={handleLinkClick}
-              >
-                Application
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) =>
-                  `nav-link text-light text-uppercase fw-bold mx-2 hover-underline-animation ${
-                    isActive ? "active" : ""
-                  }`
-                }
-                to="/clients"
-                onClick={handleLinkClick}
-              >
-                Clients
-              </NavLink>
-            </li>
+            <NavItem to="/">Home</NavItem>
+            <NavItem to="/aboutus">About Us</NavItem>
+            <NavItem to="/contactus">Contact Us</NavItem>
+            <NavItem to="/product">Product</NavItem>
+            <NavItem to="/application">Application</NavItem>
+            <NavItem to="/clients">Clients</NavItem>
           </ul>
         </div>
       </div>

@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback, useMemo } from "react";
 import "../style/Application.css";
 import app1 from './Images/app1.jpg';
 
 const Application = () => {
-  const sectors = [
+  // Memoize the sectors array to avoid re-creating it on each render
+  const sectors = useMemo(() => [
     {
       name: "Hospital",
       imgSrc: "https://www.saisamarthpolytech.com/images/hospital.jpg",
@@ -47,24 +48,25 @@ const Application = () => {
       imgSrc: "https://www.saisamarthpolytech.com/images/construction.jpg",
       description: "Safe and resilient surfaces for construction zones.",
     },
-  ];
+  ], []); // Only create once, no dependency needed
+
+  // Memoize scroll handler to prevent re-creation on each render
+  const handleScroll = useCallback(() => {
+    const cards = document.querySelectorAll(".sector-card");
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        card.classList.add("visible");
+      }
+    });
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const cards = document.querySelectorAll(".sector-card");
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          card.classList.add("visible");
-        }
-      });
-    };
-
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // Run on load in case cards are already in view
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return (
     <div className="application py-5">
