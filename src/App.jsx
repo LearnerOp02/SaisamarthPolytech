@@ -1,14 +1,21 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./component/Footer";
+
+// Components
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
+
+// Pages
 import Home from "./page/Home";
 import ContactUs from "./page/ContactUs";
 import Client from "./page/Client";
 import Application from "./page/Application";
 import AboutUs from "./page/AboutUs";
 import Products from "./page/Product";
+
+// Product Categories
 import FloorProtection from "./page/protection";
 import CorrosionProtection from "./page/corrosion";
 import HygienicWallProtection from "./page/hygine";
@@ -19,36 +26,41 @@ import FlexibleSealants from "./page/Flexible";
 import ExteriorWallSystem from "./page/Durable";
 
 function App() {
-  const [showChatbot, setShowChatbot] = useState(false); // Chatbot visibility state
+  const [showChatbot, setShowChatbot] = useState(false);
 
   const toggleChatbot = () => {
-    setShowChatbot(!showChatbot); // Toggle chatbot visibility
+    setShowChatbot(!showChatbot);
   };
 
   return (
     <div className="App">
       <Navbar />
+      
       <Routes>
+        {/* Main Pages */}
         <Route path="/" element={<Home />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/clients" element={<Client />} />
         <Route path="/application" element={<Application />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/product" element={<Products />} />
+        
+        {/* Product Categories */}
         <Route path="/protection" element={<FloorProtection />} />
         <Route path="/corrosion" element={<CorrosionProtection />} />
         <Route path="/hygine" element={<HygienicWallProtection />} />
         <Route path="/wall" element={<ChemicalProtection />} />
-        <Route path="/Epoxy" element={<EpoxyCovings />} />
-        <Route path="/Food" element={<FoodGradeCoating />} />
-        <Route path="/Flexible" element={<FlexibleSealants />} />
-        <Route path="/Durable" element={<ExteriorWallSystem />} />
+        <Route path="/epoxy" element={<EpoxyCovings />} />
+        <Route path="/food" element={<FoodGradeCoating />} />
+        <Route path="/flexible" element={<FlexibleSealants />} />
+        <Route path="/durable" element={<ExteriorWallSystem />} />
       </Routes>
+      
       <Footer />
 
-      {/* Chatbot toggle icon with image */}
+      {/* Chatbot Toggle Button */}
       <div
-        className="position-fixed"
+        className="position-fixed chatbot-icon"
         style={{
           bottom: "20px",
           right: "20px",
@@ -69,18 +81,14 @@ function App() {
         <img
           src="https://static.vecteezy.com/system/resources/thumbnails/025/271/424/small_2x/robot-chatbot-generative-ai-free-png.png"
           alt="Chatbot"
-          style={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "50%",
-          }}
+          style={{ width: "40px", height: "40px", borderRadius: "50%" }}
         />
       </div>
 
-      {/* Chatbot iframe */}
+      {/* Chatbot Iframe */}
       {showChatbot && (
         <div
-          className="position-fixed"
+          className="position-fixed chatbot-container"
           style={{
             bottom: "90px",
             right: "20px",

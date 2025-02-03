@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import "../style/Client.css";
+
+// Import client logos
 import client1 from "./Images/1.jpg";
 import client2 from "./Images/2.jpg";
 import client3 from "./Images/3.jpg";
@@ -37,46 +40,15 @@ import client33 from "./Images/33.jpg";
 import client34 from "./Images/34.jpg";
 import client35 from "./Images/35.jpg";
 import client36 from "./Images/36.jpg";
-import "../style/Client.css";
 
 const Client = () => {
+  // List of client logos
   const clientLogos = [
-    client1,
-    client2,
-    client3,
-    client4,
-    client5,
-    client6,
-    client7,
-    client8,
-    client9,
-    client10,
-    client11,
-    client12,
-    client13,
-    client14,
-    client15,
-    client16,
-    client17,
-    client18,
-    client19,
-    client20,
-    client21,
-    client22,
-    client23,
-    client24,
-    client25,
-    client26,
-    client27,
-    client28,
-    client29,
-    client30,
-    client31,
-    client32,
-    client33,
-    client34,
-    client35,
-    client36,
+    client1, client2, client3, client4, client5, client6, client7, client8, client9,
+    client10, client11, client12, client13, client14, client15, client16, client17,
+    client18, client19, client20, client21, client22, client23, client24, client25,
+    client26, client27, client28, client29, client30, client31, client32, client33,
+    client34, client35, client36,
   ];
 
   useEffect(() => {
@@ -90,13 +62,17 @@ const Client = () => {
   return (
     <div className="client-section py-5">
       <Container className="client-container text-center">
+        {/* Section Title */}
         <h1 className="title">Our Valued Clients</h1>
+
+        {/* Section Subtitle */}
         <p className="subtitle">
           We are proud to partner with top companies across diverse industries.
           Their trust in our services highlights our dedication to quality and
           reliability.
         </p>
 
+        {/* Client Logos Grid */}
         <Row className="g-4">
           {clientLogos.map((logo, index) => (
             <Col
@@ -119,6 +95,7 @@ const Client = () => {
           ))}
         </Row>
 
+        {/* Section Footer */}
         <Row className="justify-content-center mt-5">
           <Col md={8}>
             <p className="text-muted">

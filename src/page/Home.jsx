@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Home.css";
+
+// Importing images for Carousel and other sections
 import one from "./Images/1.jpg";
 import two from "./Images/2.jpg";
 import three from "./Images/3.jpg";
@@ -12,6 +14,7 @@ import seven from "./Images/pic4.png";
 import about from "./Images/about.png";
 import leader from "./Images/leader.jpg";
 
+// CarouselItem component for rendering individual carousel items
 const CarouselItem = ({ src, alt, title, description, active }) => (
   <div className={`carousel-item ${active ? "active" : ""}`}>
     <img src={src} className="d-block w-100" alt={alt} loading="lazy" />
@@ -22,6 +25,7 @@ const CarouselItem = ({ src, alt, title, description, active }) => (
   </div>
 );
 
+// GalleryItem component for rendering images in the gallery
 const GalleryItem = ({ src, alt }) => (
   <div className="col-md-3 mb-4">
     <div className="card shadow-lg rounded">
@@ -31,6 +35,7 @@ const GalleryItem = ({ src, alt }) => (
 );
 
 const Home = () => {
+  // Function to scroll to top on clicking links
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
@@ -40,6 +45,7 @@ const Home = () => {
       {/* Carousel Section */}
       <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
+          {/* Individual Carousel Items */}
           <CarouselItem
             src={five}
             alt="Health Industry"
@@ -60,6 +66,8 @@ const Home = () => {
             description="Ensuring seamless and hygienic flooring for industrial spaces."
           />
         </div>
+
+        {/* Carousel Controls */}
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
@@ -130,6 +138,7 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title text-center mb-5">Our Work in Action</h2>
           <div className="row">
+            {/* Rendering Gallery Items */}
             {[one, two, three, four].map((image, index) => (
               <GalleryItem key={index} src={image} alt={`Gallery Image ${index + 1}`} />
             ))}

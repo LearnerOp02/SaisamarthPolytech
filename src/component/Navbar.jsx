@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom"; // Use NavLink instead of Link
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState, useCallback } from "react";
+import { NavLink } from "react-router-dom";
 import "../style/Navbar.css";
 import logo from "../assets/logo.jpg";
 import clsx from "clsx";
@@ -7,6 +8,7 @@ import clsx from "clsx";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Handle scroll event to toggle navbar background
   useEffect(() => {
     const handleScroll = () => {
       const navbar = document.querySelector(".navbar");
@@ -17,13 +19,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = () => {
+  // Close the menu and scroll to the top when a link is clicked
+  const handleLinkClick = useCallback(() => {
     setMenuOpen(false);
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  };
+    window.scrollTo(0, 0);
+  }, []);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  // Toggle the mobile menu
+  const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
 
+  // Reusable NavItem component
   const NavItem = ({ to, children }) => (
     <li className="nav-item">
       <NavLink
@@ -50,7 +55,12 @@ const Navbar = () => {
           to="/"
           onClick={handleLinkClick}
         >
-          <img src={logo} alt="Logo" className="navbar-logo img-fluid me-2" />
+          <img
+            src={logo}
+            alt="Logo"
+            className="navbar-logo img-fluid me-2"
+            loading="lazy" // Lazy load the logo for better performance
+          />
           Saisamarth Polytech Pvt. Ltd.
         </NavLink>
 
