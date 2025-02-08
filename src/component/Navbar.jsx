@@ -11,10 +11,9 @@ const Navbar = () => {
   // Handle scroll event to toggle navbar background
   useEffect(() => {
     const handleScroll = () => {
-      const navbar = document.querySelector(".navbar");
-      navbar.classList.toggle("navbar-scrolled", window.scrollY > 50);
+      document.querySelector(".navbar").classList.toggle("navbar-scrolled", window.scrollY > 50);
     };
-
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -50,17 +49,8 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg text-light py-3 border-bottom border-3 border-warning animate-navbar">
       <div className="container-fluid d-flex align-items-center">
         {/* Logo and Brand Name */}
-        <NavLink
-          className="navbar-brand text-uppercase fw-bold text-warning"
-          to="/"
-          onClick={handleLinkClick}
-        >
-          <img
-            src={logo}
-            alt="Logo"
-            className="navbar-logo img-fluid me-2"
-            loading="lazy" // Lazy load the logo for better performance
-          />
+        <NavLink className="navbar-brand text-uppercase fw-bold text-warning" to="/" onClick={handleLinkClick}>
+          <img src={logo} alt="Logo" className="navbar-logo img-fluid me-2" loading="lazy" />
           Saisamarth Polytech Pvt. Ltd.
         </NavLink>
 
@@ -76,19 +66,18 @@ const Navbar = () => {
         </button>
 
         {/* Nav Links */}
-        <div
-          className={clsx("collapse navbar-collapse justify-content-end", {
-            show: menuOpen,
-          })}
-          id="navbarSupportedContent"
-        >
+        <div className={clsx("collapse navbar-collapse justify-content-end", { show: menuOpen })}>
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <NavItem to="/">Home</NavItem>
-            <NavItem to="/aboutus">About Us</NavItem>
-            <NavItem to="/contactus">Contact Us</NavItem>
-            <NavItem to="/product">Product</NavItem>
-            <NavItem to="/application">Application</NavItem>
-            <NavItem to="/clients">Clients</NavItem>
+            {[
+              { path: "/", label: "Home" },
+              { path: "/aboutus", label: "About Us" },
+              { path: "/contactus", label: "Contact Us" },
+              { path: "/product", label: "Product" },
+              { path: "/application", label: "Application" },
+              { path: "/clients", label: "Clients" },
+            ].map(({ path, label }) => (
+              <NavItem key={path} to={path}>{label}</NavItem>
+            ))}
           </ul>
         </div>
       </div>

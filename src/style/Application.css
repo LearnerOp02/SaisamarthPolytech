@@ -1,47 +1,48 @@
 /* Global Styles */
 .application {
-  background-color: #f9f9f9;
-  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #f5f5dc 0%, #e8e8d0 100%);
+  padding: 5rem 1rem;
   font-family: "Poppins", sans-serif;
 }
 
-.title {
+/* Title Styling */
+.application .title {
   font-size: 2.5rem;
-  color: #007bff;
   font-weight: 700;
+  color: #4b4b4b; /* Dark grey for text */
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
-  transform: translateY(-20px);
-  animation: slideInFromTop 1s ease forwards; /* Added slideInFromTop animation */
+  transform: translateY(-30px); /* Adjusted to match Code 1 */
+  animation: slideInFromTop 1s ease-out forwards; /* Matched to Code 1 */
   line-height: 1.3;
 }
 
-.subtitle {
+/* Subtitle Styling */
+.application .subtitle {
+  font-size: 1.2rem;
+  color: #6c6c6c; /* Slightly lighter grey for description */
   text-align: center;
-  color: #6c757d;
-  font-size: 1.1rem;
   margin-bottom: 2.5rem;
   opacity: 0;
-  transform: translateY(-20px);
-  animation: slideInFromTop 1s ease forwards; /* Added slideInFromTop animation */
-  animation-delay: 0.2s;
+  transform: translateY(20px); /* Adjusted to match Code 1 */
+  animation: fadeInUp 1.2s ease-out forwards; /* Matched to Code 1 */
+  animation-delay: 0.3s; /* Matched to Code 1 */
   line-height: 1.5;
 }
 
 /* Card Styles */
 .sector-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
-  transform: translateY(-50px); /* Start from further up */
-  animation: slideInFromTop 1s ease forwards; /* Added slideInFromTop animation */
-  animation-delay: calc(0.1s * var(--index)); /* Dynamic delay based on index */
-  background-color: #fff;
-  border: 1px solid #e0e0e0; /* Add a subtle border */
+  transform: translateY(20px); /* Adjusted to match Code 1 */
+  animation: fadeInUp 1s ease-out forwards; /* Matched to Code 1 */
+  animation-delay: calc(0.1s * var(--index)); /* Matched to Code 1 */
 }
 
 .sector-card.visible {
@@ -57,11 +58,11 @@
 
 /* Card Image Container */
 .card-img-container {
+  height: 200px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
   background-color: #f1f1f1; /* Fallback background */
   position: relative;
 }
@@ -88,14 +89,14 @@
     to bottom,
     rgba(255, 255, 255, 0) 0%,
     rgba(0, 123, 255, 0.8) 100%
-  ); /* Gradient overlay */
-  backdrop-filter: blur(4px); /* Subtle blur effect */
+  );
+  backdrop-filter: blur(4px);
   display: flex;
-  align-items: flex-end; /* Align title to the bottom */
+  align-items: flex-end;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  padding: 1rem; /* Add padding for better spacing */
+  padding: 1rem;
 }
 
 .sector-card:hover .card-overlay {
@@ -104,11 +105,11 @@
 
 .card-overlay .card-title {
   font-size: 1.5rem;
-  color: #fff; /* White text for better contrast */
+  color: #fff;
   font-weight: 700;
   text-align: center;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow for readability */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Card Body */
@@ -125,11 +126,11 @@
   line-height: 1.5;
 }
 
-/* Keyframes for Entrance Animations */
-@keyframes fadeInDown {
+/* Animations */
+@keyframes slideInFromTop {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px); /* Matched to Code 1 */
   }
   to {
     opacity: 1;
@@ -140,7 +141,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px); /* Matched to Code 1 */
   }
   to {
     opacity: 1;
@@ -148,24 +149,13 @@
   }
 }
 
-@keyframes slideInFromTop {
-  from {
-    opacity: 0;
-    transform: translateY(-50px); /* Start from further up */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive Layout */
+/* Responsive Design */
 @media (max-width: 1200px) {
-  .title {
+  .application .title {
     font-size: 2.2rem;
   }
 
-  .subtitle {
+  .application .subtitle {
     font-size: 1rem;
   }
 
@@ -175,11 +165,11 @@
 }
 
 @media (max-width: 992px) {
-  .title {
+  .application .title {
     font-size: 2rem;
   }
 
-  .subtitle {
+  .application .subtitle {
     font-size: 0.95rem;
   }
 
@@ -189,11 +179,11 @@
 }
 
 @media (max-width: 768px) {
-  .title {
+  .application .title {
     font-size: 1.8rem;
   }
 
-  .subtitle {
+  .application .subtitle {
     font-size: 0.9rem;
   }
 
@@ -203,11 +193,11 @@
 }
 
 @media (max-width: 576px) {
-  .title {
+  .application .title {
     font-size: 1.6rem;
   }
 
-  .subtitle {
+  .application .subtitle {
     font-size: 0.85rem;
   }
 
@@ -221,90 +211,5 @@
 
   .card-text {
     font-size: 0.9rem;
-  }
-}
-.application {
-  background-color: #f5f5dc; /* Beige background */
-  padding: 5rem 0;
-}
-
-.application .title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: #4b4b4b; /* Dark grey for text */
-  margin-bottom: 1.5rem;
-}
-
-.application .subtitle {
-  font-size: 1.2rem;
-  text-align: center;
-  color: #6c6c6c; /* Slightly lighter grey for description */
-  margin-bottom: 2.5rem;
-}
-
-.sector-card {
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.sector-card:hover {
-  transform: translateY(-10px); /* Slight lift effect on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.sector-card .card-img-container {
-  overflow: hidden;
-  height: 200px;
-}
-
-.sector-card .sector-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sector-card .card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff; /* White text on overlay */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.sector-card:hover .card-overlay {
-  opacity: 1; /* Show overlay on hover */
-}
-
-.sector-card .card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.sector-card .card-body {
-  padding: 1rem;
-  color: #333;
-}
-
-.sector-card .card-text {
-  font-size: 1rem;
-  color: #555;
-}
-
-@media (max-width: 767px) {
-  .sector-card .card-img-container {
-    height: 150px; /* Adjust image size on small screens */
   }
 }

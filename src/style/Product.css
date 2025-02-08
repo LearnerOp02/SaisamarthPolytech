@@ -1,55 +1,206 @@
+/* Card Styles */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px); /* Animation from Code 2 */
+  animation: fadeInUp 1s ease-out forwards; /* Matched from Code 2 */
+  animation-delay: calc(0.1s * var(--index)); /* Delay effect */
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02); /* Hover effect from Code 2 */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Title Animation */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4b4b4b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(-30px); /* Animation effect */
+  animation: slideInFromTop 1s ease-out forwards;
+}
+
+/* Subtitle Animation */
+.subtitle {
+  font-size: 1.2rem;
+  color: #6c6c6c;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Card Title */
 .card-title {
   font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
+/* Card Text */
 .card-text {
   font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  text-align: center;
 }
 
+/* Container */
 .container {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
+/* Footer */
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
 }
+
+/* Product Card Styles */
 .product-card {
-  opacity: 0; /* Initially hide cards */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-  transform: translateY(20px); /* Initial offset */
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(20px);
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: calc(0.1s * var(--index));
 }
 
 .product-card.visible {
-  opacity: 1; /* Show the card when visible */
-  transform: translateY(0); /* Reset the offset */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-card .card-img-container {
   height: 200px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  position: relative;
 }
 
 .product-card .card-img-top {
-  object-fit: cover;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.product-card .card-body {
+.product-card:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+/* Card Overlay */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 123, 255, 0.8) 100%
+  );
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+}
+
+.product-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay .card-title {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 700;
   text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Card Body */
+.card-body {
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+/* Animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
 @media (max-width: 767px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
   .product-card {
-    margin-bottom: 20px; /* Space out product cards on small screens */
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Product.css";
 import hyg from "./Images/hyg.jpg";
@@ -66,29 +66,12 @@ const Products = () => {
   // Function to Scroll to Top on Navigation
   const handleLinkClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Scroll Animation Effect
-  useEffect(() => {
-    const handleScroll = () => {
-      document.querySelectorAll(".product-card").forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          card.classList.add("visible");
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call for elements already in view
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="container my-5">
       {/* Page Header */}
       <div className="text-center mb-5">
-        <h1 className="display-4 text-black fw-bold">Our Products</h1>
-        <p className="text-secondary fs-5">
+        <h1 className="display-4 title">Our Products</h1>
+        <p className="text-secondary fs-5 subtitle">
           Explore our wide range of innovative and durable solutions
         </p>
       </div>
