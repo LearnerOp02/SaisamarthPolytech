@@ -16,13 +16,13 @@ const ContactUs = () => {
       .then(
         () => {
           toast.success("Message sent successfully!", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: "top-right",
           });
           form.current.reset();
         },
         () => {
           toast.error("Failed to send the message, please try again.", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: "top-right",
           });
         }
       );
