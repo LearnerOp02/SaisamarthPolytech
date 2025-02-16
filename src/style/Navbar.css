@@ -1,51 +1,52 @@
 :root {
-  --navbar-bg: linear-gradient(145deg, #d35400 0%, hsl(32, 100%, 50%) 100%);
-  --navbar-scrolled-bg: rgba(211, 84, 0, 0.98);
-  --accent-color: #ffc107;
-  --text-color: #fff;
-  --hover-bg: rgba(255, 255, 255, 0.1);
+  --navbar-bg: linear-gradient(
+    145deg,
+    #d35400 0%,
+    hsl(32, 100%, 50%) 100%
+  ); /* Main Orange Gradient */
+  --navbar-scrolled-bg: rgba(
+    211,
+    84,
+    0,
+    0.98
+  ); /* Slightly darker when scrolled */
+  --accent-color: #ffc107; /* Accent color */
+  --text-color: #fff; /* White text color */
+  --hover-bg: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Subtle white hover background */
   --transition-speed: 0.4s;
   --border-radius: 8px;
-  --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 2px 5px
+    rgba(0, 0, 0, 0.1); /* Reduced shadow intensity */
 }
 
 /* Navbar Base Styles */
-/* Navbar.css */
-
 .navbar {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #333; /* Adjust the background color as needed */
-}
-
-.navbar-toggler {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-body {
-  padding-top: 70px; /* Adjust this value based on the height of your navbar */
-}
-
-/* Add any other existing styles you have in your Navbar.css */
-
-.navbar {
   background: var(--navbar-bg);
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
   padding: 0.75rem 1.5rem;
   transition: background var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px) saturate(180%);
+  backdrop-filter: blur(
+    10px
+  ) saturate(
+    180%
+  ); /* For frosted glass effect */
   -webkit-backdrop-filter: blur(10px) saturate(180%);
   box-shadow: var(--box-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.navbar-scrolled {
+  background: var(--navbar-scrolled-bg); /* Change background on scroll */
 }
 
 /* Navbar Brand */
@@ -53,7 +54,7 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-color);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Reduced text shadow */
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -70,7 +71,7 @@ body {
 
 .navbar-logo:hover {
   transform: rotate(8deg) scale(1.1);
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)) brightness(1.1);
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3)) brightness(1.1);
 }
 
 /* Nav Links */
@@ -86,7 +87,7 @@ body {
 
 .nav-link:hover {
   background: var(--hover-bg);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+  box-shadow: 0 2px 7px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid var(--accent-color);
 }
@@ -94,7 +95,7 @@ body {
 .nav-link.active {
   background: rgba(255, 255, 255, 0.15);
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2),
+  box-shadow: 0 2px 7px rgba(255, 255, 255, 0.1),
     inset 0 1px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid var(--accent-color);
 }
@@ -102,15 +103,12 @@ body {
 /* Mobile Styles */
 @media (max-width: 991px) {
   .navbar {
-    padding: 0rem;
+    padding: 0.5rem 1rem; /* Reduced padding */
   }
 
   .navbar-brand {
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
-    flex-grow: 1; /* Allow the brand to take up available space */
+    font-size: 1rem; /* Slightly smaller on mobile */
+    gap: 0.3rem;
   }
 
   .navbar-logo {
@@ -119,15 +117,15 @@ body {
   }
 
   .navbar-toggler {
-    order: 2; /* Move the toggler to the end */
-    margin-left: auto; /* Push the toggler to the right */
-    padding: 0.25rem 0.5rem; /* Reduce padding to make the toggler smaller */
-    font-size: 0.875rem; /* Reduce font size */
+    order: 2;
+    margin-left: auto;
+    padding: 0.2rem 0.4rem; /* Further reduced padding */
+    font-size: 0.75rem; /* Smaller font size */
   }
 
   .navbar-toggler-icon {
-    width: 1.2em; /* Reduce the size of the toggler icon */
-    height: 1.2em; /* Reduce the size of the toggler icon */
+    width: 1em;
+    height: 1em;
   }
 
   .navbar-collapse {
@@ -138,7 +136,7 @@ body {
   }
 
   .nav-link {
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.8rem; /* Adjusted padding */
     text-align: center;
     background: rgba(255, 255, 255, 0.05);
   }
@@ -149,7 +147,7 @@ body {
   }
 }
 
-/* Smooth Scrolling and Interaction Enhancements */
+/* General Styles (Consider moving to a global stylesheet) */
 html {
   scroll-behavior: smooth;
 }
@@ -159,16 +157,15 @@ body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
+  padding-top: 70px; /* Adjust this value based on the height of your navbar */
 }
 
-/* Ensure content visibility on all devices */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Responsive Images */
 img {
   max-width: 100%;
   height: auto;

@@ -1,13 +1,16 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { FaEnvelope, FaPhone } from "react-icons/fa";
-import "../style/Footer.css";
+import { FaEnvelope, FaPhone, FaChevronRight } from "react-icons/fa";
 
 const FooterLink = ({ to, children, onClick }) => (
   <li className="mb-2">
-    <Link to={to} className="footer-link text-light" onClick={onClick}>
+    <Link
+      to={to}
+      onClick={onClick}
+      className="text-light text-decoration-none d-flex align-items-center hover-link"
+      style={{ transition: "all 0.3s ease" }}
+    >
+      <FaChevronRight className="me-2 opacity-75" size={12} />
       {children}
     </Link>
   </li>
@@ -15,7 +18,11 @@ const FooterLink = ({ to, children, onClick }) => (
 
 const ContactLink = ({ href, icon: Icon, children }) => (
   <p className="mb-2">
-    <Link to={href} className="footer-contact d-flex align-items-center text-light">
+    <Link
+      to={href}
+      className="text-light text-decoration-none d-flex align-items-center hover-link"
+      style={{ transition: "all 0.3s ease" }}
+    >
       <Icon className="me-2" /> {children}
     </Link>
   </p>
@@ -24,7 +31,6 @@ const ContactLink = ({ href, icon: Icon, children }) => (
 const Footer = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close the menu and scroll to the top when a link is clicked
   const handleLinkClick = useCallback(() => {
     setMenuOpen(false);
     window.scrollTo(0, 0);
@@ -40,32 +46,75 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer bg-dark text-light">
-      <div className="container py-4">
-        <div className="row">
+    <footer
+      style={{
+        background: "#0a192f",
+        borderTop: "1px solid rgba(100, 255, 218, 0.1)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        className="position-absolute w-100 h-100"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 50%)",
+          pointerEvents: "none",
+        }}
+      ></div>
+
+      <div className="container py-5 position-relative">
+        <div className="row g-4">
           {/* Company Info */}
-          <div className="col-md-4 mb-4">
-            <h5 className="text-uppercase text-dark">Saisamarth Polytech Pvt. Ltd.</h5>
-            <p className="text-light">
-              We specialize in cutting-edge solutions in polymer technology, leading through innovation and quality.
+          <div className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start">
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{
+                borderBottom: "2px solid rgba(100, 255, 218, 0.1)",
+              }}
+            >
+              Saisamarth Polytech Pvt. Ltd.
+            </h5>
+            <p className="text-light opacity-75">
+              We specialize in cutting-edge solutions in polymer technology,
+              leading through innovation and quality.
             </p>
           </div>
 
           {/* Navigation Links */}
-          <div className="col-md-4 mb-4">
-            <h5 className="text-uppercase text-dark">Explore</h5>
+          <div className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start">
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{
+                borderBottom: "2px solid rgba(100, 255, 218, 0.1)",
+              }}
+            >
+              Explore
+            </h5>
             <ul className="list-unstyled">
               {footerLinks.map(({ to, label }) => (
-                <FooterLink key={to} to={to} onClick={handleLinkClick}>{label}</FooterLink>
+                <FooterLink key={to} to={to} onClick={handleLinkClick}>
+                  {label}
+                </FooterLink>
               ))}
             </ul>
           </div>
 
           {/* Contact Info */}
-          <div className="col-md-4 mb-4">
-            <h5 className="text-uppercase text-dark">Get in Touch</h5>
+          <div className="col-lg-4 col-md-12 col-sm-12 text-center text-md-start">
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{
+                borderBottom: "2px solid rgba(100, 255, 218, 0.1)",
+              }}
+            >
+              Get in Touch
+            </h5>
             <div className="contact-info">
-              <ContactLink href="mailto:saisamarthpolytech@gmail.com" icon={FaEnvelope}>
+              <ContactLink
+                href="mailto:saisamarthpolytech@gmail.com"
+                icon={FaEnvelope}
+              >
                 saisamarthpolytech@gmail.com
               </ContactLink>
               <ContactLink href="tel:+919324529411" icon={FaPhone}>
@@ -75,15 +124,52 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom Section */}
-        <div className="footer-bottom text-center mt-4">
-          <p className="text-light mb-0">
-            &copy; {currentYear} Saisamarth Polytech Pvt. Ltd. All Rights Reserved.
-            <Link to="/privacy" className="footer-link text-warning ms-2 text-dark">Privacy Policy</Link> |
-            <Link to="/terms" className="footer-link text-warning ms-2 text-dark">Terms of Service</Link>
+        {/* Footer Bottom */}
+        <div
+          className="mt-5 pt-4 text-center border-top"
+          style={{ borderColor: "rgba(100, 255, 218, 0.1)" }}
+        >
+          <p className="text-light opacity-75 mb-0">
+            &copy; {currentYear} Saisamarth Polytech Pvt. Ltd. All Rights
+            Reserved.
+            <Link
+              to="/privacy"
+              className="text-light ms-2 text-decoration-none hover-link"
+            >
+              Privacy Policy
+            </Link>{" "}
+            |
+            <Link
+              to="/terms"
+              className="text-light ms-2 text-decoration-none hover-link"
+            >
+              Terms of Service
+            </Link>
           </p>
         </div>
       </div>
+
+      <style>
+        {`
+          .hover-link:hover {
+            color: #64ffda !important;
+            transform: translateX(5px);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+          
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </footer>
   );
 };

@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import "../style/Client.css";
-
-// Import client logos
+import React from "react";
+import { motion } from "framer-motion";
 import client1 from "./Images/1.jpg";
 import client2 from "./Images/2.jpg";
 import client3 from "./Images/3.jpg";
@@ -41,76 +37,82 @@ import client34 from "./Images/34.jpg";
 import client35 from "./Images/35.jpg";
 import client36 from "./Images/36.jpg";
 
-const Client = () => {
-  // List of client logos
-  const clientLogos = [
-    client1, client2, client3, client4, client5, client6, client7, client8, client9,
-    client10, client11, client12, client13, client14, client15, client16, client17,
-    client18, client19, client20, client21, client22, client23, client24, client25,
-    client26, client27, client28, client29, client30, client31, client32, client33,
-    client34, client35, client36,
-  ];
+// Store all images in an array
+const clientImages = [
+  client1, client2, client3, client4, client5, client6, client7, client8, client9, client10,
+  client11, client12, client13, client14, client15, client16, client17, client18, client19, client20,
+  client21, client22, client23, client24, client25, client26, client27, client28, client29, client30,
+  client31, client32, client33, client34, client35, client36
+];
 
-  useEffect(() => {
-    // Add animation delay to each client card
-    const cards = document.querySelectorAll(".client-card");
-    cards.forEach((card, index) => {
-      card.style.setProperty("--index", index);
-    });
-  }, []);
+// Create an array of client objects
+const clientData = clientImages.map((img, index) => ({
+  img,
+  name: `Client ${index + 1}`,
+}));
 
+const Clients = () => {
   return (
-    <div className="client-section py-5">
-      <Container className="client-container text-center">
-        {/* Section Title */}
-        <h1 className="title">Our Valued Clients</h1>
-
-        {/* Section Subtitle */}
-        <p className="subtitle">
-          We are proud to partner with top companies across diverse industries.
-          Their trust in our services highlights our dedication to quality and
-          reliability.
-        </p>
-
-        {/* Client Logos Grid */}
-        <Row className="g-4">
-          {clientLogos.map((logo, index) => (
-            <Col
-              xs={6}
-              sm={4}
-              md={3}
-              key={index}
-              className="d-flex justify-content-center align-items-center"
-            >
-              <div className="client-card">
-                <div className="card-inner">
+    <div style={{ background: "#0a192f" }}>
+      <section
+        className="py-5 text-white"
+        style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
+      >
+        <div className="container py-5">
+          <motion.h1
+            className="display-4 fw-bold text-center mb-4"
+            style={{ color: "#64ffda" }}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Our Clients
+          </motion.h1>
+          <motion.p
+            className="text-center mb-5"
+            style={{ color: "#ccd6f6", maxWidth: "700px", margin: "0 auto" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            We take pride in collaborating with leading companies across various
+            industries. Here are some of our esteemed clients who have trusted
+            us with their needs.
+          </motion.p>
+          <div className="row g-4 justify-content-center">
+            {clientData.map((client, index) => (
+              <motion.div
+                key={index}
+                className="col-md-4 col-lg-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <motion.div
+                  className="card h-100"
+                  style={{
+                    background: "#0a192f",
+                    border: "1px solid #233554",
+                    textAlign: "center",
+                    padding: "10px",
+                  }}
+                  whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(100,255,218,0.1)" }}
+                  transition={{ duration: 0.3 }}
+                >
                   <img
-                    src={logo}
-                    alt={`Client Logo ${index + 1}`}
-                    className="client-logo"
+                    src={client.img}
+                    className="card-img-top"
+                    alt={client.name}
+                    style={{ height: "200px", objectFit: "cover" }}
                   />
-                </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-
-        {/* Section Footer */}
-        <Row className="justify-content-center mt-5">
-          <Col md={8}>
-            <p className="text-muted">
-              At Saisamarth Polytech, we value our clients and aim to build
-              long-term relationships grounded in trust and shared success.
-            </p>
-            <p className="text-muted">
-              Our collaborative approach ensures continuous improvement,
-              enabling us to meet and exceed client expectations.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default Client;
+export default Clients;

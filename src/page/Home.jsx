@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { Link } from "react-router-dom";
-import "../style/Home.css";
-
-// Importing images for Carousel and other sections
+import React, { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
 import one from "./Images/1.jpg";
 import two from "./Images/2.jpg";
 import three from "./Images/3.jpg";
@@ -13,141 +9,235 @@ import six from "./Images/pic3.png";
 import seven from "./Images/pic4.png";
 import about from "./Images/about.png";
 import leader from "./Images/leader.jpg";
-
-// CarouselItem component for rendering individual carousel items
-const CarouselItem = ({ src, alt, title, description, active }) => (
-  <div className={`carousel-item ${active ? "active" : ""}`}>
-    <img src={src} className="d-block w-100" alt={alt} loading="lazy" />
-    <div className="carousel-caption">
-      <h5>{title}</h5>
-      <p>{description}</p>
-    </div>
-  </div>
-);
-
-// GalleryItem component for rendering images in the gallery
-const GalleryItem = ({ src, alt }) => (
-  <div className="col-md-3 mb-4">
-    <div className="card shadow-lg rounded">
-      <img src={src} alt={alt} className="card-img-top rounded-top" loading="lazy" />
-    </div>
-  </div>
-);
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  // Function to scroll to top on clicking links
-  const handleLinkClick = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState({});
+
+  const handleLinkClick = useCallback(() => {
     window.scrollTo(0, 0);
-  };
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % 3);
+    }, 5000);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }));
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll("[data-aos]").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+    };
+  }, []);
+
+  const carouselItems = [
+    {
+      image: five,
+      title: "Health Industry",
+      description:
+        "Providing cutting-edge solutions for healthcare environments.",
+    },
+    {
+      image: six,
+      title: "Automobile Industry",
+      description:
+        "Delivering durable and high-performance flooring solutions.",
+    },
+    {
+      image: seven,
+      title: "Epoxy Flooring",
+      description:
+        "Ensuring seamless and hygienic flooring for industrial spaces.",
+    },
+  ];
 
   return (
-    <div className="home-container">
-      {/* Carousel Section */}
-      <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+    <div style={{ background: "#0a192f" }}>
+      {/* Hero Carousel */}
+      <div className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
-          {/* Individual Carousel Items */}
-          <CarouselItem
-            src={five}
-            alt="Health Industry"
-            title="Health Industry"
-            description="Providing cutting-edge solutions for healthcare environments."
-            active
-          />
-          <CarouselItem
-            src={six}
-            alt="Automobile Industry"
-            title="Automobile Industry"
-            description="Delivering durable and high-performance flooring solutions."
-          />
-          <CarouselItem
-            src={seven}
-            alt="Epoxy Flooring"
-            title="Epoxy Flooring"
-            description="Ensuring seamless and hygienic flooring for industrial spaces."
-          />
+          {carouselItems.map((item, index) => (
+            <div
+              key={index}
+              className={`carousel-item ${
+                index === activeIndex ? "active" : ""
+              }`}
+            >
+              <div className="position-relative w-100 vh-100">
+                <div
+                  className="position-absolute w-100 h-100"
+                  style={{
+                    background:
+                      "linear-gradient(to right, rgba(10,25,47,0.9), rgba(10,25,47,0.7))",
+                    zIndex: 1,
+                  }}
+                />
+                <img
+                  src={item.image}
+                  className="d-block w-100 h-100 object-fit-cover"
+                  alt={item.title}
+                />
+                <div
+                  className="position-absolute top-50 start-50 translate-middle text-center text-white px-3"
+                  style={{ zIndex: 2 }}
+                >
+                  <h2
+                    className="display-5 fw-bold mb-3"
+                    style={{ color: "#64ffda" }}
+                  >
+                    {item.title}
+                  </h2>
+                  <p className="lead mb-4 text-light">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-
-        {/* Carousel Controls */}
-        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
 
       {/* Welcome Section */}
-      <section className="welcome-section text-center bg-beige py-5">
+      <section
+        className="py-5 text-white text-center"
+        data-aos="fade-up"
+        id="welcome"
+      >
         <div className="container">
-          <h1 className="welcome-title fade-in">
-            Welcome to <span className="highlight">Saisamarth Polytech Pvt. Ltd.</span>
+          <h1 className="display-4 fw-bold mb-4" style={{ color: "#64ffda" }}>
+            Welcome to Saisamarth Polytech
           </h1>
-          <p className="welcome-text fade-in">
-            Delivering excellence in cleanroom finishing solutions with cutting-edge polymer technologies.
+          <p className="lead mb-4" style={{ color: "#8892b0" }}>
+            Delivering excellence in cleanroom finishing solutions with
+            cutting-edge polymer technologies.
           </p>
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section className="about-us py-5 bg-beige fade-in">
+      {/* About Section */}
+      <section
+        className="py-5"
+        data-aos="fade-up"
+        id="about"
+        style={{ background: "#112240" }}
+      >
         <div className="container">
-          <h2 className="section-title text-center mb-5">About Us</h2>
           <div className="row align-items-center">
-            <div className="col-md-6">
+            <div className="col-md-6 text-center text-md-start">
+              <h2
+                className="display-5 fw-bold mb-4"
+                style={{ color: "#64ffda" }}
+              >
+                About Us
+              </h2>
+              <p className="lead mb-4" style={{ color: "#8892b0" }}>
+                With over 20 years of expertise, we specialize in epoxy and
+                polymer treatments for cleanroom environments.
+              </p>
+              <Link
+                to="/aboutus"
+                onClick={handleLinkClick}
+                className="btn btn-lg px-4 text-dark fw-bold"
+                style={{ background: "#64ffda" }}
+              >
+                Learn More
+              </Link>
+            </div>
+            <div className="col-md-6 text-center mt-4 mt-md-0">
               <img
                 src={about}
+                className="img-fluid rounded shadow-lg"
                 alt="About Us"
-                className="img-fluid rounded shadow-lg about-img"
-                loading="lazy"
               />
-            </div>
-            <div className="col-md-6">
-              <p className="about-text">
-                With over 20 years of expertise, we specialize in epoxy and polymer treatments for cleanroom environments. Our solutions are trusted by leading pharmaceutical, healthcare, and food industry clients, delivering both innovation and reliability.
-              </p>
-              <Link to="/aboutus">
-                <button className="btn btn-primary mt-3" onClick={handleLinkClick}>
-                  Learn More
-                </button>
-              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Leadership Section */}
-      <section className="leadership text-center py-5 bg-beige fade-in">
+      <section
+        className="py-5 text-white text-center"
+        data-aos="fade-up"
+        id="leadership"
+        style={{ background: "#0a192f" }}
+      >
         <div className="container">
-          <h2 className="section-title mb-2">Our Leadership</h2>
-          <img
-            src={leader}
-            alt="Leader"
-            className="img-fluid rounded shadow-lg leader-img"
-            loading="lazy"
-          />
-          <p className="leadership-text">
-            Under the visionary leadership of our Director, Mr. Atulkumar Patil, we are committed to delivering exceptional quality and ensuring client satisfaction at every step.
-          </p>
+          <h2 className="display-5 fw-bold mb-5" style={{ color: "#64ffda" }}>
+            Our Leadership
+          </h2>
+          <div className="row justify-content-center">
+            <div className="col-md-4 text-center">
+              <img
+                src={leader}
+                className="img-fluid rounded-circle shadow-lg mb-4"
+                alt="Leader"
+                style={{ width: "200px", height: "200px", objectFit: "cover" }}
+              />
+              <h4 className="fw-bold" style={{ color: "#64ffda" }}>
+                Mr. Atulkumar Patil
+              </h4>
+              <p className="lead" style={{ color: "#8892b0" }}>
+                Founder & CEO - Leading innovation and excellence in polymer
+                solutions for industrial environments.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section className="gallery py-5 bg-beige fade-in">
+      <section className="py-5 text-center" data-aos="fade-up" id="gallery">
         <div className="container">
-          <h2 className="section-title text-center mb-5">Our Work in Action</h2>
-          <div className="row">
-            {/* Rendering Gallery Items */}
+          <h2 className="display-5 fw-bold mb-5" style={{ color: "#64ffda" }}>
+            Our Work in Action
+          </h2>
+          <div className="row g-4">
             {[one, two, three, four].map((image, index) => (
-              <GalleryItem key={index} src={image} alt={`Gallery Image ${index + 1}`} />
+              <div key={index} className="col-6 col-md-3">
+                <motion.div
+                  className="card h-100"
+                  style={{
+                    background: "#0a192f",
+                    border: "1px solid #233554",
+                    textAlign: "center",
+                    padding: "10px",
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0px 10px 20px rgba(100,255,218,0.1)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={image}
+                    className="img-fluid rounded shadow"
+                    alt={`Gallery ${index + 1}`}
+                  />
+                </motion.div>
+              </div>
             ))}
           </div>
-          <div className="d-flex justify-content-center mt-4">
-            <Link to="/clients">
-              <button className="btn btn-primary" onClick={handleLinkClick}>
-                Learn More
-              </button>
+          <div className="text-center mt-4">
+            <Link
+              to="/clients"
+              onClick={handleLinkClick}
+              className="btn btn-lg px-4 text-dark fw-bold"
+              style={{ background: "#64ffda" }}
+            >
+              View All Clients
             </Link>
           </div>
         </div>
