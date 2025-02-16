@@ -16,25 +16,20 @@ const ContactUs = () => {
       .then(
         () => {
           toast.success("Message sent successfully!", {
-            position: "top-right",
+            position: toast.POSITION.TOP_RIGHT,
           });
           form.current.reset();
         },
         () => {
           toast.error("Failed to send the message, please try again.", {
-            position: "top-right",
+            position: toast.POSITION.TOP_RIGHT,
           });
         }
       );
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      style={{ background: "#0a192f" }}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ background: "#0a192f" }}>
       <motion.section
         className="py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
@@ -60,8 +55,8 @@ const ContactUs = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2 }}
           >
-            Have a question, need assistance, or want to collaborate? We're here to help! 
-            Feel free to reach out via the form below, or contact us directly. 
+            Have a question, need assistance, or want to collaborate? We're here to help!
+            Feel free to reach out via the form below, or contact us directly.
             Our team will get back to you as soon as possible.
           </motion.p>
 
