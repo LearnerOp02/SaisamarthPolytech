@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import one from "./Images/1.jpg";
 import two from "./Images/2.jpg";
 import three from "./Images/3.jpg";
@@ -9,15 +12,17 @@ import six from "./Images/pic3.png";
 import seven from "./Images/pic4.png";
 import about from "./Images/about.png";
 import leader from "./Images/leader.jpg";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState({});
 
+  // Scroll to top on link click
   const handleLinkClick = useCallback(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Carousel auto-rotation and intersection observer for animations
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % 3);
@@ -45,6 +50,7 @@ const Home = () => {
     };
   }, []);
 
+  // Carousel items
   const carouselItems = [
     {
       image: five,
@@ -68,15 +74,29 @@ const Home = () => {
 
   return (
     <div style={{ background: "#0a192f" }}>
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Saisamarth Polytech - Home</title>
+        <meta
+          name="description"
+          content="Delivering excellence in cleanroom finishing solutions with cutting-edge polymer technologies."
+        />
+        <meta
+          name="keywords"
+          content="epoxy flooring, polymer solutions, cleanroom finishing, industrial flooring"
+        />
+      </Helmet>
+
       {/* Hero Carousel */}
       <div className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           {carouselItems.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`carousel-item ${
-                index === activeIndex ? "active" : ""
-              }`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: index === activeIndex ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+              className={`carousel-item ${index === activeIndex ? "active" : ""}`}
             >
               <div className="position-relative w-100 vh-100">
                 <div
@@ -91,6 +111,7 @@ const Home = () => {
                   src={item.image}
                   className="d-block w-100 h-100 object-fit-cover"
                   alt={item.title}
+                  loading="lazy"
                 />
                 <div
                   className="position-absolute top-50 start-50 translate-middle text-center text-white px-3"
@@ -105,9 +126,22 @@ const Home = () => {
                   <p className="lead mb-4 text-light">{item.description}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+        {/* Carousel Controls */}
+        <button
+          className="carousel-control-prev"
+          onClick={() => setActiveIndex((activeIndex - 1 + 3) % 3)}
+        >
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
+        </button>
+        <button
+          className="carousel-control-next"
+          onClick={() => setActiveIndex((activeIndex + 1) % 3)}
+        >
+          <span className="carousel-control-next-icon" aria-hidden="true" />
+        </button>
       </div>
 
       {/* Welcome Section */}
@@ -117,7 +151,11 @@ const Home = () => {
         id="welcome"
       >
         <div className="container">
-          <h1 className="display-4 fw-bold mb-4" style={{ color: "#64ffda" }}>
+          <h1
+            className="display-4 fw-bold mb-4"
+            style={{ color: "#64ffda" }}
+            aria-label="Welcome to Saisamarth Polytech"
+          >
             Welcome to Saisamarth Polytech
           </h1>
           <p className="lead mb-4" style={{ color: "#8892b0" }}>
@@ -161,6 +199,7 @@ const Home = () => {
                 src={about}
                 className="img-fluid rounded shadow-lg"
                 alt="About Us"
+                loading="lazy"
               />
             </div>
           </div>
@@ -185,6 +224,7 @@ const Home = () => {
                 className="img-fluid rounded-circle shadow-lg mb-4"
                 alt="Leader"
                 style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                loading="lazy"
               />
               <h4 className="fw-bold" style={{ color: "#64ffda" }}>
                 Mr. Atulkumar Patil
@@ -225,6 +265,7 @@ const Home = () => {
                     src={image}
                     className="img-fluid rounded shadow"
                     alt={`Gallery ${index + 1}`}
+                    loading="lazy"
                   />
                 </motion.div>
               </div>

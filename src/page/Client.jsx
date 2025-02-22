@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 import client1 from "./Images/1.jpg";
 import client2 from "./Images/2.jpg";
 import client3 from "./Images/3.jpg";
@@ -39,10 +40,42 @@ import client36 from "./Images/36.jpg";
 
 // Store all images in an array
 const clientImages = [
-  client1, client2, client3, client4, client5, client6, client7, client8, client9, client10,
-  client11, client12, client13, client14, client15, client16, client17, client18, client19, client20,
-  client21, client22, client23, client24, client25, client26, client27, client28, client29, client30,
-  client31, client32, client33, client34, client35, client36
+  client1,
+  client2,
+  client3,
+  client4,
+  client5,
+  client6,
+  client7,
+  client8,
+  client9,
+  client10,
+  client11,
+  client12,
+  client13,
+  client14,
+  client15,
+  client16,
+  client17,
+  client18,
+  client19,
+  client20,
+  client21,
+  client22,
+  client23,
+  client24,
+  client25,
+  client26,
+  client27,
+  client28,
+  client29,
+  client30,
+  client31,
+  client32,
+  client33,
+  client34,
+  client35,
+  client36,
 ];
 
 // Create an array of client objects
@@ -51,10 +84,56 @@ const clientData = clientImages.map((img, index) => ({
   name: `Client ${index + 1}`,
 }));
 
+const ClientCard = ({ client, index }) => (
+  <motion.div
+    className="col-md-4 col-lg-3"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.05 }}
+  >
+    <motion.div
+      className="card h-100"
+      style={{
+        background: "#0a192f",
+        border: "1px solid #233554",
+        textAlign: "center",
+        padding: "10px",
+      }}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0px 10px 20px rgba(100,255,218,0.1)",
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      <img
+        src={client.img}
+        className="card-img-top"
+        alt={client.name}
+        style={{ height: "200px", objectFit: "cover" }}
+        loading="lazy"
+      />
+    </motion.div>
+  </motion.div>
+);
+
 const Clients = () => {
   return (
     <div style={{ background: "#0a192f" }}>
-      <section
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Our Clients - Saisamarth Polytech</title>
+        <meta
+          name="description"
+          content="Explore our esteemed clients who have trusted us with their needs. We collaborate with leading companies across various industries."
+        />
+        <meta
+          name="keywords"
+          content="industrial flooring, epoxy flooring, cleanroom solutions, polymer treatments"
+        />
+      </Helmet>
+
+      {/* Hero Section */}
+      <header
         className="py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
@@ -73,44 +152,25 @@ const Clients = () => {
             style={{ color: "#ccd6f6", maxWidth: "700px", margin: "0 auto" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1 }}
           >
             We take pride in collaborating with leading companies across various
             industries. Here are some of our esteemed clients who have trusted
             us with their needs.
           </motion.p>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="py-5">
+        <div className="container">
           <div className="row g-4 justify-content-center">
             {clientData.map((client, index) => (
-              <motion.div
-                key={index}
-                className="col-md-4 col-lg-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
-                <motion.div
-                  className="card h-100"
-                  style={{
-                    background: "#0a192f",
-                    border: "1px solid #233554",
-                    textAlign: "center",
-                    padding: "10px",
-                  }}
-                  whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(100,255,218,0.1)" }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img
-                    src={client.img}
-                    className="card-img-top"
-                    alt={client.name}
-                    style={{ height: "200px", objectFit: "cover" }}
-                  />
-                </motion.div>
-              </motion.div>
+              <ClientCard key={index} client={client} index={index} />
             ))}
           </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 };

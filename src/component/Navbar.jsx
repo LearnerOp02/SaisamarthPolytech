@@ -1,16 +1,14 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import classNames from "classnames";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
+    const handleScroll = () => setScrollPosition(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -22,15 +20,15 @@ const Navbar = () => {
 
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
 
-  const navbarStyle = {
-    background:
-      scrollPosition > 50
-        ? "rgba(10, 25, 47, 0.95)"
-        : "transparent",
-    backdropFilter: "blur(10px)",
-    transition: "all 0.3s ease-in-out",
-    boxShadow: scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
-  };
+  const navbarStyle = useMemo(
+    () => ({
+      background: scrollPosition > 50 ? "rgba(10, 25, 47, 0.95)" : "transparent",
+      backdropFilter: "blur(10px)",
+      transition: "all 0.3s ease-in-out",
+      boxShadow: scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
+    }),
+    [scrollPosition]
+  );
 
   const linkStyle = {
     position: "relative",
@@ -45,7 +43,19 @@ const Navbar = () => {
     borderBottom: "2px solid #64ffda",
   };
 
-  const NavItem = ({ to, children }) => (
+  const menuItems = useMemo(
+    () => [
+      { path: "/", label: "Home" },
+      { path: "/aboutus", label: "About" },
+      { path: "/product", label: "Products" },
+      { path: "/application", label: "Applications" },
+      { path: "/clients", label: "Clients" },
+      { path: "/contactus", label: "Contact" },
+    ],
+    []
+  );
+
+  const NavLinkItem = ({ path, label }) => (
     <li className="nav-item">
       <NavLink
         className="nav-link px-3 py-2 text-light"
@@ -53,10 +63,10 @@ const Navbar = () => {
           ...linkStyle,
           ...(isActive ? activeLinkStyle : {}),
         })}
-        to={to}
+        to={path}
         onClick={handleLinkClick}
       >
-        {children}
+        {label}
       </NavLink>
     </li>
   );
@@ -64,11 +74,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top" style={navbarStyle}>
       <div className="container">
-        <NavLink
-          className="navbar-brand d-flex align-items-center"
-          to="/"
-          onClick={handleLinkClick}
-        >
+        <NavLink className="navbar-brand d-flex align-items-center" to="/" onClick={handleLinkClick}>
           <img
             src={logo}
             alt="Logo"
@@ -78,6 +84,7 @@ const Navbar = () => {
               height: "50px",
               filter: "drop-shadow(0 0 5px rgba(100, 255, 218, 0.5))",
             }}
+            loading="lazy"
           />
           <span
             className="text-light fw-bold"
@@ -91,8 +98,9 @@ const Navbar = () => {
           </span>
         </NavLink>
 
+        {/* Toggle Button */}
         <button
-          className={`navbar-toggler ${isMenuOpen ? "" : "collapsed"}`}
+          className={classNames("navbar-toggler", { collapsed: !isMenuOpen })}
           type="button"
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
@@ -102,25 +110,14 @@ const Navbar = () => {
             padding: "0.5rem",
           }}
         >
-          <span
-            className="navbar-toggler-icon"
-            style={{ filter: "invert(1) hue-rotate(90deg)" }}
-          />
+          <span className="navbar-toggler-icon" style={{ filter: "invert(1) hue-rotate(90deg)" }} />
         </button>
 
-        <div className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}>
+        {/* Menu */}
+        <div className={classNames("collapse navbar-collapse", { show: isMenuOpen })}>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {[
-              { path: "/", label: "Home" },
-              { path: "/aboutus", label: "About" },
-              { path: "/product", label: "Products" },
-              { path: "/application", label: "Applications" },
-              { path: "/clients", label: "Clients" },
-              { path: "/contactus", label: "Contact" },
-            ].map(({ path, label }) => (
-              <NavItem key={path} to={path}>
-                {label}
-              </NavItem>
+            {menuItems.map(({ path, label }) => (
+              <NavLinkItem key={path} path={path} label={label} />
             ))}
           </ul>
         </div>

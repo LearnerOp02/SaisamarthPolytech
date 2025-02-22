@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Shield, Target, Factory } from "lucide-react";
+import { ArrowLeft} from "lucide-react";
 
 const CorrosionProtection = () => {
   useEffect(() => {
@@ -8,9 +9,9 @@ const CorrosionProtection = () => {
   }, []);
 
   const features = [
-    { icon: <Shield size={24} />, title: "Advanced Protection", description: "Prevents rust and corrosion on metal surfaces with cutting-edge technology." },
-    { icon: <Target size={24} />, title: "Durability", description: "Long-lasting coating that provides reliable protection in harsh conditions." },
-    { icon: <Factory size={24} />, title: "Chemical Resistance", description: "Highly resistant to various chemicals and environmental factors." },
+    { title: "Advanced Protection", description: "Prevents rust and corrosion on metal surfaces with cutting-edge technology." },
+    { title: "Durability", description: "Long-lasting coating that provides reliable protection in harsh conditions." },
+    { title: "Chemical Resistance", description: "Highly resistant to various chemicals and environmental factors." },
   ];
 
   const applications = [
@@ -55,33 +56,41 @@ const CorrosionProtection = () => {
                   className="card-img-top"
                   alt="Corrosion Protection System"
                   style={{ height: "300px", objectFit: "cover" }}
+                  loading="lazy"
                 />
               </div>
             </div>
             <div className="col-md-6">
               <h2 style={{ color: "#64ffda" }}>Features</h2>
-              <ul style={{ color: "#ccd6f6" }}>
+              <ul style={{ color: "#ccd6f6", listStyleType: "none", paddingLeft: "0" }}>
                 {features.map((feature, index) => (
-                  <li key={index} className="d-flex align-items-center">
+                  <li key={index} className="d-flex align-items-center mb-3">
+                    <span style={{ color: "#64ffda", marginRight: "10px" }}>•</span>
                     {feature.icon} <span className="ms-2">{feature.title} - {feature.description}</span>
                   </li>
                 ))}
               </ul>
-              <h2 style={{ color: "#64ffda" }}>Application Areas</h2>
-              <ul style={{ color: "#ccd6f6" }}>
+
+              <h2 style={{ color: "#64ffda", marginTop: "2rem" }}>Application Areas</h2>
+              <ul style={{ color: "#ccd6f6", listStyleType: "none", paddingLeft: "0" }}>
                 {applications.map((app, index) => (
-                  <li key={index}>{app}</li>
+                  <li key={index} className="mb-2">
+                    <span style={{ color: "#64ffda", marginRight: "10px" }}>•</span>
+                    {app}
+                  </li>
                 ))}
               </ul>
             </div>
           </div>
           <div className="text-center mt-4">
-            <Link to="/product" className="btn btn-lg px-5"
+            <Link
+              to="/product"
+              className="btn btn-lg px-5"
               style={{
                 backgroundColor: "transparent",
                 border: "1px solid #64ffda",
                 color: "#64ffda",
-                transition: "all 0.3s ease"
+                transition: "all 0.3s ease",
               }}
               onMouseOver={(e) => {
                 e.target.style.backgroundColor = "rgba(100,255,218,0.1)";

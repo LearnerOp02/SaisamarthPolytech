@@ -5,6 +5,7 @@ import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   const form = useRef();
@@ -30,12 +31,23 @@ const ContactUs = () => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ background: "#0a192f" }}>
-      <motion.section
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Contact Us - Saisamarth Polytech</title>
+        <meta
+          name="description"
+          content="Get in touch with Saisamarth Polytech for any inquiries or assistance. We're here to help with your clean room finishing solutions."
+        />
+        <meta
+          name="keywords"
+          content="contact, epoxy flooring, polymer treatments, cleanroom solutions"
+        />
+      </Helmet>
+
+      {/* Hero Section */}
+      <header
         className="py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1 }}
       >
         <div className="container py-5">
           <motion.h1
@@ -61,6 +73,7 @@ const ContactUs = () => {
           </motion.p>
 
           <div className="row g-4 justify-content-center">
+            {/* Contact Information */}
             <motion.div className="col-md-6" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <div className="card p-4 h-100" style={{ background: "#0a192f", border: "1px solid #233554" }}>
                 <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>Our Office</h3>
@@ -87,6 +100,7 @@ const ContactUs = () => {
               </div>
             </motion.div>
 
+            {/* Contact Form */}
             <motion.div className="col-md-6" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
               <div className="card p-4 h-100" style={{ background: "#0a192f", border: "1px solid #233554" }}>
                 <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>Get in Touch</h3>
@@ -126,7 +140,7 @@ const ContactUs = () => {
             </motion.div>
           </div>
         </div>
-      </motion.section>
+      </header>
       <ToastContainer />
     </motion.div>
   );
