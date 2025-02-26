@@ -1,7 +1,52 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import classNames from "classnames";
+
+// Styles
+const navbarBaseStyle = {
+  backdropFilter: "blur(10px)",
+  transition: "all 0.3s ease-in-out",
+  fontFamily: "'Poppins', sans-serif", // Apply Poppins font
+};
+
+const linkStyle = {
+  position: "relative",
+  overflow: "hidden",
+  transition: "all 0.3s ease",
+};
+
+const activeLinkStyle = {
+  color: "#64ffda",
+  textShadow: "0 0 10px rgba(100, 255, 218, 0.5)",
+  fontWeight: "bold",
+  borderBottom: "2px solid #64ffda",
+};
+
+// Menu Items
+const menuItems = [
+  { path: "/", label: "Home" },
+  { path: "/aboutus", label: "About" },
+  { path: "/product", label: "Products" },
+  { path: "/application", label: "Applications" },
+  { path: "/clients", label: "Clients" },
+  { path: "/contactus", label: "Contact" },
+];
+
+// NavLinkItem Component
+const NavLinkItem = ({ path, label, onClick }) => (
+  <li className="nav-item">
+    <NavLink
+      className="nav-link px-3 py-2 text-light"
+      style={({ isActive }) => ({ ...linkStyle, ...(isActive ? activeLinkStyle : {}) })}
+      to={path}
+      onClick={onClick}
+    >
+      {label}
+    </NavLink>
+  </li>
+);
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,60 +65,17 @@ const Navbar = () => {
 
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
 
-  const navbarStyle = useMemo(
-    () => ({
-      background: scrollPosition > 50 ? "rgba(10, 25, 47, 0.95)" : "transparent",
-      backdropFilter: "blur(10px)",
-      transition: "all 0.3s ease-in-out",
-      boxShadow: scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
-    }),
-    [scrollPosition]
-  );
-
-  const linkStyle = {
-    position: "relative",
-    overflow: "hidden",
-    transition: "all 0.3s ease",
-  };
-
-  const activeLinkStyle = {
-    color: "#64ffda",
-    textShadow: "0 0 10px rgba(100, 255, 218, 0.5)",
-    fontWeight: "bold",
-    borderBottom: "2px solid #64ffda",
-  };
-
-  const menuItems = useMemo(
-    () => [
-      { path: "/", label: "Home" },
-      { path: "/aboutus", label: "About" },
-      { path: "/product", label: "Products" },
-      { path: "/application", label: "Applications" },
-      { path: "/clients", label: "Clients" },
-      { path: "/contactus", label: "Contact" },
-    ],
-    []
-  );
-
-  const NavLinkItem = ({ path, label }) => (
-    <li className="nav-item">
-      <NavLink
-        className="nav-link px-3 py-2 text-light"
-        style={({ isActive }) => ({
-          ...linkStyle,
-          ...(isActive ? activeLinkStyle : {}),
-        })}
-        to={path}
-        onClick={handleLinkClick}
-      >
-        {label}
-      </NavLink>
-    </li>
-  );
-
   return (
-    <nav className="navbar navbar-expand-lg fixed-top" style={navbarStyle}>
+    <nav
+      className="navbar navbar-expand-lg fixed-top"
+      style={{
+        ...navbarBaseStyle,
+        background: scrollPosition > 50 ? "rgba(10, 25, 47, 0.95)" : "transparent",
+        boxShadow: scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
+      }}
+    >
       <div className="container">
+        {/* Brand Logo */}
         <NavLink className="navbar-brand d-flex align-items-center" to="/" onClick={handleLinkClick}>
           <img
             src={logo}
@@ -117,7 +119,7 @@ const Navbar = () => {
         <div className={classNames("collapse navbar-collapse", { show: isMenuOpen })}>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {menuItems.map(({ path, label }) => (
-              <NavLinkItem key={path} path={path} label={label} />
+              <NavLinkItem key={path} path={path} label={label} onClick={handleLinkClick} />
             ))}
           </ul>
         </div>

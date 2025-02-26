@@ -8,6 +8,7 @@ const styles = {
     borderTop: "1px solid rgba(100, 255, 218, 0.1)",
     position: "relative",
     overflow: "hidden",
+    fontFamily: "'Poppins', sans-serif", // Apply Poppins font
   },
   gradientOverlay: {
     background:
@@ -129,6 +130,10 @@ const Footer = () => {
 
       <style>
         {`
+          * {
+            font-family: 'Poppins', sans-serif !important;
+          }
+
           .hover-link:hover {
             color: #64ffda !important;
             transform: translateX(5px);
