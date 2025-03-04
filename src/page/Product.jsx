@@ -9,6 +9,7 @@ import seal from "./Images/seal.jpg";
 import paint from "./Images/paint.jpeg";
 import a5 from "./Images/a5.jpg";
 import chemical from "./Images/chemical.jpg";
+import PropTypes from "prop-types";
 
 const productData = [
   {
@@ -61,14 +62,18 @@ const productData = [
   },
 ];
 
-const ProductCard = ({ product, index }) => (
+const ProductCard = React.memo(({ product }) => (
   <motion.div
     className="col-md-4 col-lg-3"
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
   >
-    <Link to={product.path} className="text-decoration-none">
+    <Link
+      to={product.path}
+      className="text-decoration-none"
+      aria-label={`View ${product.title}`}
+    >
       <motion.div
         className="card h-100"
         style={{
@@ -102,11 +107,22 @@ const ProductCard = ({ product, index }) => (
       </motion.div>
     </Link>
   </motion.div>
-);
+));
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+ProductCard.displayName = "ProductCard";
 
 const Products = () => {
   return (
-    <div style={{ background: "#0a192f" }}>
+    <div className="products" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Our Products - Saisamarth Polytech</title>
@@ -122,7 +138,7 @@ const Products = () => {
 
       {/* Hero Section */}
       <header
-        className="py-5 text-white"
+        className="hero-section py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
         <div className="container py-5">
@@ -132,6 +148,7 @@ const Products = () => {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            aria-label="Our Products"
           >
             Our Products
           </motion.h1>
@@ -159,8 +176,42 @@ const Products = () => {
           </div>
         </div>
       </main>
+
+      <style>
+        {`
+          .products {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .hero-section {
+            padding: 60px 0;
+          }
+
+          .card {
+            transition: all 0.3s ease;
+          }
+
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
-export default Products;
+export default React.memo(Products);

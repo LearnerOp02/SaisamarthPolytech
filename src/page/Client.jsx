@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import PropTypes from "prop-types";
 import client1 from "./Images/1.jpg";
 import client2 from "./Images/2.jpg";
 import client3 from "./Images/3.jpg";
@@ -84,7 +85,7 @@ const clientData = clientImages.map((img, index) => ({
   name: `Client ${index + 1}`,
 }));
 
-const ClientCard = ({ client, index }) => (
+const ClientCard = React.memo(({ client, index }) => (
   <motion.div
     className="col-md-4 col-lg-3"
     initial={{ opacity: 0, y: 20 }}
@@ -114,11 +115,21 @@ const ClientCard = ({ client, index }) => (
       />
     </motion.div>
   </motion.div>
-);
+));
+
+ClientCard.displayName = "ClientCard";
+
+ClientCard.propTypes = {
+  client: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 const Clients = () => {
   return (
-    <div style={{ background: "#0a192f" }}>
+    <div className="clients" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Our Clients - Saisamarth Polytech</title>
@@ -134,7 +145,7 @@ const Clients = () => {
 
       {/* Hero Section */}
       <header
-        className="py-5 text-white"
+        className="hero-section py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
         <div className="container py-5">
@@ -144,6 +155,7 @@ const Clients = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            aria-label="Our Clients"
           >
             Our Clients
           </motion.h1>
@@ -171,8 +183,42 @@ const Clients = () => {
           </div>
         </div>
       </main>
+
+      <style>
+        {`
+          .clients {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .hero-section {
+            padding: 60px 0;
+          }
+
+          .card {
+            transition: all 0.3s ease;
+          }
+
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
-export default Clients;
+export default React.memo(Clients);

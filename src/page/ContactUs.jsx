@@ -13,7 +13,12 @@ const ContactUs = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
-      .sendForm("service_35evjmh", "template_2od4x3r", form.current, "aYJwPKPk2z2MMpKy5")
+      .sendForm(
+        "service_35evjmh",
+        "template_2od4x3r",
+        form.current,
+        "aYJwPKPk2z2MMpKy5"
+      )
       .then(
         () => {
           toast.success("Message sent successfully!", {
@@ -30,7 +35,13 @@ const ContactUs = () => {
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{ background: "#0a192f" }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="contact-us"
+      style={{ background: "#0a192f" }}
+    >
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Contact Us - Saisamarth Polytech</title>
@@ -46,7 +57,7 @@ const ContactUs = () => {
 
       {/* Hero Section */}
       <header
-        className="py-5 text-white"
+        className="hero-section py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
         <div className="container py-5">
@@ -56,32 +67,50 @@ const ContactUs = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            aria-label="Contact Us"
           >
             Contact Us
           </motion.h1>
 
           <motion.p
             className="text-center mb-5"
-            style={{ color: "#ccd6f6", maxWidth: "800px", margin: "0 auto", fontSize: "1.1rem" }}
+            style={{
+              color: "#ccd6f6",
+              maxWidth: "800px",
+              margin: "0 auto",
+              fontSize: "1.1rem",
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2 }}
           >
-            Have a question, need assistance, or want to collaborate? We're here to help!
-            Feel free to reach out via the form below, or contact us directly.
-            Our team will get back to you as soon as possible.
+            Have a question, need assistance, or want to collaborate? We're here
+            to help! Feel free to reach out via the form below, or contact us
+            directly. Our team will get back to you as soon as possible.
           </motion.p>
 
           <div className="row g-4 justify-content-center">
             {/* Contact Information */}
-            <motion.div className="col-md-6" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <div className="card p-4 h-100" style={{ background: "#0a192f", border: "1px solid #233554" }}>
-                <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>Our Office</h3>
+            <motion.div
+              className="col-md-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <div
+                className="card p-4 h-100"
+                style={{ background: "#0a192f", border: "1px solid #233554" }}
+              >
+                <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>
+                  Our Office
+                </h3>
                 <p className="text-center text-light">
-                  <FaLocationDot className="me-2 text-primary" /> 213, 2nd Floor, Sai Arcade, Mulund-West, Mumbai - 400080, India.
+                  <FaLocationDot className="me-2 text-primary" /> 213, 2nd
+                  Floor, Sai Arcade, Mulund-West, Mumbai - 400080, India.
                 </p>
                 <p className="text-center text-light">
-                  <MdEmail className="me-2 text-primary" /> saisamarthpolytech@gmail.com
+                  <MdEmail className="me-2 text-primary" />{" "}
+                  saisamarthpolytech@gmail.com
                 </p>
                 <p className="text-center text-light">
                   <FaPhone className="me-2 text-primary" /> +91 9324529411
@@ -101,21 +130,55 @@ const ContactUs = () => {
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div className="col-md-6" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}>
-              <div className="card p-4 h-100" style={{ background: "#0a192f", border: "1px solid #233554" }}>
-                <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>Get in Touch</h3>
+            <motion.div
+              className="col-md-6"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <div
+                className="card p-4 h-100"
+                style={{ background: "#0a192f", border: "1px solid #233554" }}
+              >
+                <h3 className="text-center mb-4" style={{ color: "#64ffda" }}>
+                  Get in Touch
+                </h3>
                 <form ref={form} onSubmit={sendEmail}>
                   <motion.div className="mb-3" whileFocus={{ scale: 1.05 }}>
-                    <input className="form-control" type="text" name="user_name" placeholder="Name" required />
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="user_name"
+                      placeholder="Name"
+                      required
+                    />
                   </motion.div>
                   <motion.div className="mb-3" whileFocus={{ scale: 1.05 }}>
-                    <input className="form-control" type="text" name="user_phone" placeholder="Phone No" required />
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="user_phone"
+                      placeholder="Phone No"
+                      required
+                    />
                   </motion.div>
                   <motion.div className="mb-3" whileFocus={{ scale: 1.05 }}>
-                    <input className="form-control" type="email" name="user_email" placeholder="E-mail" required />
+                    <input
+                      className="form-control"
+                      type="email"
+                      name="user_email"
+                      placeholder="E-mail"
+                      required
+                    />
                   </motion.div>
                   <motion.div className="mb-3" whileFocus={{ scale: 1.05 }}>
-                    <textarea className="form-control" name="message" placeholder="Your Message" rows="4" required></textarea>
+                    <textarea
+                      className="form-control"
+                      name="message"
+                      placeholder="Your Message"
+                      rows="4"
+                      required
+                    ></textarea>
                   </motion.div>
                   <div className="text-center">
                     <motion.button
@@ -142,8 +205,42 @@ const ContactUs = () => {
         </div>
       </header>
       <ToastContainer />
+
+      <style>
+        {`
+          .contact-us {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .hero-section {
+            padding: 60px 0;
+          }
+
+          .card {
+            transition: all 0.3s ease;
+          }
+
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </motion.div>
   );
 };
 
-export default ContactUs;
+export default React.memo(ContactUs);

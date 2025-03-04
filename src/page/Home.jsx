@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -51,29 +51,32 @@ const Home = () => {
   }, []);
 
   // Carousel items
-  const carouselItems = [
-    {
-      image: five,
-      title: "Health Industry",
-      description:
-        "Providing cutting-edge solutions for healthcare environments.",
-    },
-    {
-      image: six,
-      title: "Automobile Industry",
-      description:
-        "Delivering durable and high-performance flooring solutions.",
-    },
-    {
-      image: seven,
-      title: "Epoxy Flooring",
-      description:
-        "Ensuring seamless and hygienic flooring for industrial spaces.",
-    },
-  ];
+  const carouselItems = useMemo(
+    () => [
+      {
+        image: five,
+        title: "Health Industry",
+        description:
+          "Providing cutting-edge solutions for healthcare environments.",
+      },
+      {
+        image: six,
+        title: "Automobile Industry",
+        description:
+          "Delivering durable and high-performance flooring solutions.",
+      },
+      {
+        image: seven,
+        title: "Epoxy Flooring",
+        description:
+          "Ensuring seamless and hygienic flooring for industrial spaces.",
+      },
+    ],
+    []
+  );
 
   return (
-    <div style={{ background: "#0a192f" }}>
+    <div className="home" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Saisamarth Polytech - Home</title>
@@ -88,7 +91,11 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Carousel */}
-      <div className="carousel slide" data-bs-ride="carousel">
+      <section
+        className="carousel slide"
+        data-bs-ride="carousel"
+        aria-label="Hero Carousel"
+      >
         <div className="carousel-inner">
           {carouselItems.map((item, index) => (
             <motion.div
@@ -96,7 +103,9 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: index === activeIndex ? 1 : 0 }}
               transition={{ duration: 0.5 }}
-              className={`carousel-item ${index === activeIndex ? "active" : ""}`}
+              className={`carousel-item ${
+                index === activeIndex ? "active" : ""
+              }`}
             >
               <div className="position-relative w-100 vh-100">
                 <div
@@ -133,20 +142,22 @@ const Home = () => {
         <button
           className="carousel-control-prev"
           onClick={() => setActiveIndex((activeIndex - 1 + 3) % 3)}
+          aria-label="Previous Slide"
         >
           <span className="carousel-control-prev-icon" aria-hidden="true" />
         </button>
         <button
           className="carousel-control-next"
           onClick={() => setActiveIndex((activeIndex + 1) % 3)}
+          aria-label="Next Slide"
         >
           <span className="carousel-control-next-icon" aria-hidden="true" />
         </button>
-      </div>
+      </section>
 
       {/* Welcome Section */}
       <section
-        className="py-5 text-white text-center"
+        className="welcome-section py-5 text-white text-center"
         data-aos="fade-up"
         id="welcome"
       >
@@ -167,7 +178,7 @@ const Home = () => {
 
       {/* About Section */}
       <section
-        className="py-5"
+        className="about-section py-5"
         data-aos="fade-up"
         id="about"
         style={{ background: "#112240" }}
@@ -190,6 +201,8 @@ const Home = () => {
                 onClick={handleLinkClick}
                 className="btn btn-lg px-4 text-dark fw-bold"
                 style={{ background: "#64ffda" }}
+                title="Learn More About Us"
+                aria-label="Learn More About Us"
               >
                 Learn More
               </Link>
@@ -208,7 +221,7 @@ const Home = () => {
 
       {/* Leadership Section */}
       <section
-        className="py-5 text-white text-center"
+        className="leadership-section py-5 text-white text-center"
         data-aos="fade-up"
         id="leadership"
         style={{ background: "#0a192f" }}
@@ -239,7 +252,11 @@ const Home = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-5 text-center" data-aos="fade-up" id="gallery">
+      <section
+        className="gallery-section py-5 text-center"
+        data-aos="fade-up"
+        id="gallery"
+      >
         <div className="container">
           <h2 className="display-5 fw-bold mb-5" style={{ color: "#64ffda" }}>
             Our Work in Action
@@ -277,14 +294,54 @@ const Home = () => {
               onClick={handleLinkClick}
               className="btn btn-lg px-4 text-dark fw-bold"
               style={{ background: "#64ffda" }}
+              title="View All Clients"
+              aria-label="View All Clients"
             >
               View All Clients
             </Link>
           </div>
         </div>
       </section>
+
+      <style>
+        {`
+          .home {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .carousel-item {
+            transition: opacity 0.5s ease-in-out;
+          }
+
+          .welcome-section, .about-section, .leadership-section, .gallery-section {
+            padding: 60px 0;
+          }
+
+          .btn {
+            transition: all 0.3s ease;
+          }
+
+          .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
-export default Home;
+export default React.memo(Home);

@@ -56,7 +56,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div style={{ background: "#0a192f" }}>
+    <div className="about-us" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
         <title>About Us - Saisamarth Polytech</title>
@@ -72,7 +72,7 @@ const AboutUs = () => {
 
       {/* Hero Section */}
       <header
-        className="py-5 text-white"
+        className="hero-section py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
         <div className="container text-center">
@@ -82,6 +82,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            aria-label="About Us"
           >
             About Us
           </motion.h1>
@@ -99,7 +100,7 @@ const AboutUs = () => {
       </header>
 
       {/* About Us Section */}
-      <section className="py-5 text-white">
+      <section className="about-section py-5 text-white">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
@@ -109,6 +110,7 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                aria-label="Who We Are"
               >
                 Who We Are
               </motion.h2>
@@ -161,7 +163,7 @@ const AboutUs = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="py-5 text-white">
+      <section className="team-section py-5 text-white">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 text-center">
@@ -182,6 +184,7 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                aria-label="Our Expert Team"
               >
                 Our Expert Team
               </motion.h2>
@@ -212,7 +215,7 @@ const AboutUs = () => {
       </section>
 
       {/* Our Technology Section */}
-      <section className="py-5 text-white">
+      <section className="technology-section py-5 text-white">
         <div className="container">
           <motion.h2
             className="font-weight-bold text-center mb-5"
@@ -220,6 +223,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            aria-label="Four-Dimensional Technology"
           >
             Four-Dimensional Technology
           </motion.h2>
@@ -267,7 +271,7 @@ const AboutUs = () => {
       </section>
 
       {/* What We Provide Section */}
-      <section className="py-5 text-white">
+      <section className="services-section py-5 text-white">
         <div className="container">
           <motion.h2
             className="font-weight-bold text-center mb-5"
@@ -275,6 +279,7 @@ const AboutUs = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            aria-label="What We Provide"
           >
             What We Provide
           </motion.h2>
@@ -318,8 +323,42 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+
+      <style>
+        {`
+          .about-us {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .hero-section, .about-section, .team-section, .technology-section, .services-section {
+            padding: 60px 0;
+          }
+
+          .technology-card, .service-card {
+            transition: all 0.3s ease;
+          }
+
+          .technology-card:hover, .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
-export default AboutUs;
+export default React.memo(AboutUs);

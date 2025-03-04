@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import PropTypes from "prop-types";
 import app1 from "./Images/app1.jpg";
 
 const sectors = [
@@ -48,7 +49,7 @@ const sectors = [
   },
 ];
 
-const SectorCard = ({ sector, index }) => (
+const SectorCard = React.memo(({ sector }) => (
   <motion.div
     className="col-md-4 col-lg-3"
     initial={{ opacity: 0, y: 20 }}
@@ -87,11 +88,21 @@ const SectorCard = ({ sector, index }) => (
       </div>
     </motion.div>
   </motion.div>
-);
+));
+
+SectorCard.propTypes = {
+  sector: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+SectorCard.displayName = "SectorCard";
 
 const Application = () => {
   return (
-    <div style={{ background: "#0a192f" }}>
+    <div className="application" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
         <title>Industries We Serve - Saisamarth Polytech</title>
@@ -107,7 +118,7 @@ const Application = () => {
 
       {/* Hero Section */}
       <header
-        className="py-5 text-white"
+        className="hero-section py-5 text-white"
         style={{ background: "linear-gradient(to bottom, #0a192f, #112240)" }}
       >
         <div className="container py-5">
@@ -117,6 +128,7 @@ const Application = () => {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
+            aria-label="Industries We Serve"
           >
             Industries We Serve
           </motion.h1>
@@ -143,8 +155,42 @@ const Application = () => {
           </div>
         </div>
       </main>
+
+      <style>
+        {`
+          .application {
+            font-family: 'Poppins', sans-serif;
+          }
+
+          .hero-section {
+            padding: 60px 0;
+          }
+
+          .card {
+            transition: all 0.3s ease;
+          }
+
+          .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+          }
+
+          @media (max-width: 768px) {
+            .container {
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .col-sm-12 {
+              text-align: center !important;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
-export default Application;
+export default React.memo(Application);

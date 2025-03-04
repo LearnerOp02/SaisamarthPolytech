@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import classNames from "classnames";
@@ -8,7 +8,7 @@ import classNames from "classnames";
 const navbarBaseStyle = {
   backdropFilter: "blur(10px)",
   transition: "all 0.3s ease-in-out",
-  fontFamily: "'Poppins', sans-serif", // Apply Poppins font
+  fontFamily: "'Poppins', sans-serif",
 };
 
 const linkStyle = {
@@ -35,18 +35,33 @@ const menuItems = [
 ];
 
 // NavLinkItem Component
-const NavLinkItem = ({ path, label, onClick }) => (
+import PropTypes from "prop-types";
+
+const NavLinkItem = memo(({ path, label, onClick }) => (
   <li className="nav-item">
     <NavLink
       className="nav-link px-3 py-2 text-light"
-      style={({ isActive }) => ({ ...linkStyle, ...(isActive ? activeLinkStyle : {}) })}
+      style={({ isActive }) => ({
+        ...linkStyle,
+        ...(isActive ? activeLinkStyle : {}),
+      })}
       to={path}
       onClick={onClick}
+      aria-label={`Navigate to ${label}`}
+      title={`Navigate to ${label}`}
     >
       {label}
     </NavLink>
   </li>
-);
+));
+
+NavLinkItem.propTypes = {
+  path: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+NavLinkItem.displayName = "NavLinkItem";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,16 +85,24 @@ const Navbar = () => {
       className="navbar navbar-expand-lg fixed-top"
       style={{
         ...navbarBaseStyle,
-        background: scrollPosition > 50 ? "rgba(10, 25, 47, 0.95)" : "transparent",
-        boxShadow: scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
+        background:
+          scrollPosition > 50 ? "rgba(10, 25, 47, 0.95)" : "transparent",
+        boxShadow:
+          scrollPosition > 50 ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
       }}
     >
       <div className="container">
         {/* Brand Logo */}
-        <NavLink className="navbar-brand d-flex align-items-center" to="/" onClick={handleLinkClick}>
+        <NavLink
+          className="navbar-brand d-flex align-items-center"
+          to="/"
+          onClick={handleLinkClick}
+          aria-label="Home"
+          title="Home"
+        >
           <img
             src={logo}
-            alt="Logo"
+            alt="Saisamarth Polytech Logo"
             className="rounded-circle me-2"
             style={{
               width: "50px",
@@ -112,14 +135,26 @@ const Navbar = () => {
             padding: "0.5rem",
           }}
         >
-          <span className="navbar-toggler-icon" style={{ filter: "invert(1) hue-rotate(90deg)" }} />
+          <span
+            className="navbar-toggler-icon"
+            style={{ filter: "invert(1) hue-rotate(90deg)" }}
+          />
         </button>
 
         {/* Menu */}
-        <div className={classNames("collapse navbar-collapse", { show: isMenuOpen })}>
+        <div
+          className={classNames("collapse navbar-collapse", {
+            show: isMenuOpen,
+          })}
+        >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             {menuItems.map(({ path, label }) => (
-              <NavLinkItem key={path} path={path} label={label} onClick={handleLinkClick} />
+              <NavLinkItem
+                key={path}
+                path={path}
+                label={label}
+                onClick={handleLinkClick}
+              />
             ))}
           </ul>
         </div>
@@ -128,4 +163,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
