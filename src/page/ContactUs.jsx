@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
@@ -22,15 +20,11 @@ const ContactUs = () => {
       )
       .then(
         () => {
-          toast.success("Message sent successfully!", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          alert("Message sent successfully!");
           form.current.reset();
         },
         () => {
-          toast.error("Failed to send the message, please try again.", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          alert("Failed to send the message, please try again.");
         }
       );
   };
@@ -204,7 +198,6 @@ const ContactUs = () => {
           </div>
         </div>
       </header>
-      <ToastContainer />
 
       <style>
         {`
