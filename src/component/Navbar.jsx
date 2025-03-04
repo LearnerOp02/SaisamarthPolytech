@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback, memo } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 // Styles
 const navbarBaseStyle = {
@@ -33,9 +34,6 @@ const menuItems = [
   { path: "/clients", label: "Clients" },
   { path: "/contactus", label: "Contact" },
 ];
-
-// NavLinkItem Component
-import PropTypes from "prop-types";
 
 const NavLinkItem = memo(({ path, label, onClick }) => (
   <li className="nav-item">
