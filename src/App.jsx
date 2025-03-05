@@ -14,6 +14,7 @@ import Client from "./page/Client";
 import Application from "./page/Application";
 import AboutUs from "./page/AboutUs";
 import Products from "./page/Product";
+import Pagenotfound from "./page/pagenotfound";
 
 // Product Categories
 import FloorProtection from "./page/protection";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/application" element={<Application />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/product" element={<Products />} />
+        <Route path="*" element={<Pagenotfound/>} />
         
         {/* Product Categories */}
         <Route path="/protection" element={<FloorProtection />} />
