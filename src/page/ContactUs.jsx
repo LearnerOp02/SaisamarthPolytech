@@ -115,7 +115,7 @@ const ContactUs = () => {
                 <p className="text-center text-light">
                   <FaPhone className="me-2 text-primary" />{" "}
                   <Link
-                    to="tel:+919930646993"
+                    to="tel:+919324529411"
                     style={{ color: "inherit", textDecoration: "none" }}
                   >
                     +91 9324529411
