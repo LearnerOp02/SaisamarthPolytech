@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
+import React, { useRef} from "react";
+import { Link } from "react-router-dom";
 import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
@@ -104,10 +105,21 @@ const ContactUs = () => {
                 </p>
                 <p className="text-center text-light">
                   <MdEmail className="me-2 text-primary" />{" "}
-                  saisamarthpolytech@gmail.com
+                  <Link
+                    to="mailto:saisamarthpolytech@gmail.com"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    saisamarthpolytech@gmail.com
+                  </Link>
                 </p>
                 <p className="text-center text-light">
-                  <FaPhone className="me-2 text-primary" /> +91 9324529411
+                  <FaPhone className="me-2 text-primary" />{" "}
+                  <Link
+                    to="tel:+919324529411"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
+                    +91 9324529411
+                  </Link>
                 </p>
                 <div className="mt-4">
                   <iframe
