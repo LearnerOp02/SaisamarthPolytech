@@ -122,7 +122,7 @@ const AboutUs = () => {
               >
                 <strong>Saisamarth Polytech Pvt. Ltd.</strong> is a leading
                 provider of clean room finishing solutions, specializing in
-                epoxy and polymer treatments. With over 20 years of experience,
+                epoxy and polymer treatments. With over 25 years of experience,
                 we deliver innovative and durable solutions for industries
                 requiring high hygiene standards.
               </motion.p>
@@ -195,7 +195,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5 }}
               >
                 Our team is led by <strong>Mr. Atulkumar Patil</strong>, a
-                seasoned professional with 25+ years of experience in flooring
+                seasoned professional with over 25 years of experience in flooring
                 and coatings. His expertise and leadership drive our commitment
                 to excellence.
               </motion.p>

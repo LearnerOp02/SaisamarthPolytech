@@ -40,29 +40,34 @@ const productData = [
     title: "Epoxy Covings",
     description: "Seamless epoxy covings for various applications.",
     img: epoxy,
-    path: "/Epoxy",
+    path: "/epoxy",
   },
   {
     title: "Food Grade Coating",
     description: "Safe and hygienic coatings for food industries.",
     img: hyg,
-    path: "/Food",
+    path: "/food",
   },
   {
     title: "Flexible Sealants",
     description: "High-quality sealants for flexible solutions.",
     img: seal,
-    path: "/Flexible",
+    path: "/flexible",
   },
   {
     title: "Durable Exterior Wall System",
     description: "Weather-resistant and durable wall systems.",
     img: paint,
-    path: "/Durable",
+    path: "/durable",
   },
 ];
 
-const ProductCard = React.memo(({ product }) => (
+// Handle scroll to top on product click
+const handleSubmit = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+const ProductCard = React.memo(({ product, onClick }) => (
   <motion.div
     className="col-md-4 col-lg-3"
     initial={{ opacity: 0, y: 50 }}
@@ -73,6 +78,7 @@ const ProductCard = React.memo(({ product }) => (
       to={product.path}
       className="text-decoration-none"
       aria-label={`View ${product.title}`}
+      onClick={onClick} // Attach the onClick handler here
     >
       <motion.div
         className="card h-100"
@@ -116,6 +122,7 @@ ProductCard.propTypes = {
     img: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
+  onClick: PropTypes.func.isRequired, // Add onClick to prop types
 };
 
 ProductCard.displayName = "ProductCard";
@@ -171,7 +178,11 @@ const Products = () => {
         <div className="container">
           <div className="row g-4 justify-content-center">
             {productData.map((product, index) => (
-              <ProductCard key={index} product={product} index={index} />
+              <ProductCard
+                key={index}
+                product={product}
+                onClick={handleSubmit} // Pass handleSubmit as a prop
+              />
             ))}
           </div>
         </div>

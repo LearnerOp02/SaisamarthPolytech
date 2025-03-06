@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 
 // Components
@@ -28,15 +28,35 @@ import ExteriorWallSystem from "./page/Durable";
 
 function App() {
   const [showChatbot, setShowChatbot] = useState(false);
+  const location = useLocation(); // Hook to get the current route location
 
   const toggleChatbot = () => {
     setShowChatbot(!showChatbot);
   };
 
+  // Check if the current route is the 404 page
+  const is404Page = location.pathname === "/404" || ![
+    "/",
+    "/contactus",
+    "/clients",
+    "/application",
+    "/aboutus",
+    "/product",
+    "/protection",
+    "/corrosion",
+    "/hygine",
+    "/wall",
+    "/epoxy",
+    "/food",
+    "/flexible",
+    "/durable",
+  ].includes(location.pathname);
+
   return (
     <div className="App">
-      <Navbar />
-      
+      {/* Conditionally render Navbar if not on the 404 page */}
+      {!is404Page && <Navbar />}
+
       <Routes>
         {/* Main Pages */}
         <Route path="/" element={<Home />} />
@@ -45,8 +65,9 @@ function App() {
         <Route path="/application" element={<Application />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/product" element={<Products />} />
-        <Route path="*" element={<Pagenotfound/>} />
-        
+        <Route path="/404" element={<Pagenotfound />} />
+        <Route path="*" element={<Pagenotfound />} />
+
         {/* Product Categories */}
         <Route path="/protection" element={<FloorProtection />} />
         <Route path="/corrosion" element={<CorrosionProtection />} />
@@ -57,8 +78,9 @@ function App() {
         <Route path="/flexible" element={<FlexibleSealants />} />
         <Route path="/durable" element={<ExteriorWallSystem />} />
       </Routes>
-      
-      <Footer />
+
+      {/* Conditionally render Footer if not on the 404 page */}
+      {!is404Page && <Footer />}
 
       {/* Chatbot Toggle Button */}
       <div

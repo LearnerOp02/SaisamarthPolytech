@@ -193,7 +193,7 @@ const Home = () => {
                 About Us
               </h2>
               <p className="lead mb-4" style={{ color: "#8892b0" }}>
-                With over 20 years of expertise, we specialize in epoxy and
+                With over 25+ years of expertise, we specialize in epoxy and
                 polymer treatments for cleanroom environments.
               </p>
               <Link
