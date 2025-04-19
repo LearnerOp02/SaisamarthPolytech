@@ -29,7 +29,7 @@ const activeLinkStyle = {
 const menuItems = [
   { path: "/", label: "Home" },
   { path: "/aboutus", label: "About" },
-  { path: "/product", label: "Products" },
+  { path: "/product", label: "Protection Solution" },
   { path: "/application", label: "Applications" },
   { path: "/clients", label: "Clients" },
   { path: "/contactus", label: "Contact" },

@@ -132,7 +132,7 @@ const Products = () => {
     <div className="products" style={{ background: "#0a192f" }}>
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>Our Products - Saisamarth Polytech</title>
+        <title>Our Protection Solutions - Saisamarth Polytech</title>
         <meta
           name="description"
           content="Explore our diverse range of high-performance protection systems designed for various industries. Our solutions provide durability, safety, and innovation."
@@ -157,7 +157,7 @@ const Products = () => {
             transition={{ duration: 0.8 }}
             aria-label="Our Products"
           >
-            Our Products
+            Our Protection Solutions
           </motion.h1>
           <motion.p
             className="text-center mb-4"

@@ -21,24 +21,47 @@ const Footer = () => {
   );
 
   return (
-    <footer className="footer" style={{ background: "#0a192f", borderTop: "1px solid rgba(100, 255, 218, 0.1)" }}>
-      <div className="gradient-overlay" style={{ background: "radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 50%)", pointerEvents: "none" }}></div>
+    <footer
+      className="footer"
+      style={{
+        background: "#0a192f",
+        borderTop: "1px solid rgba(100, 255, 218, 0.1)",
+      }}
+    >
+      <div
+        className="gradient-overlay"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 50%)",
+          pointerEvents: "none",
+        }}
+      ></div>
 
       <div className="container py-5 position-relative">
         <div className="row g-4">
           {/* Company Info */}
           <section className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start">
-            <h5 className="text-white fw-bold mb-4 pb-2" style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}>
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}
+            >
               Saisamarth Polytech Pvt. Ltd.
             </h5>
             <p className="text-light opacity-75">
-              We specialize in cutting-edge solutions in polymer technology, leading through innovation and quality.
+              We specialize in cutting-edge solutions in polymer technology,
+              leading through innovation and quality.
             </p>
           </section>
 
           {/* Navigation Links */}
-          <nav className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start" aria-label="Footer Navigation">
-            <h5 className="text-white fw-bold mb-4 pb-2" style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}>
+          <nav
+            className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start"
+            aria-label="Footer Navigation"
+          >
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}
+            >
               Explore
             </h5>
             <ul className="list-unstyled">
@@ -60,8 +83,14 @@ const Footer = () => {
           </nav>
 
           {/* Contact Info */}
-          <section className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start" aria-label="Contact Information">
-            <h5 className="text-white fw-bold mb-4 pb-2" style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}>
+          <section
+            className="col-lg-4 col-md-6 col-sm-12 text-center text-md-start"
+            aria-label="Contact Information"
+          >
+            <h5
+              className="text-white fw-bold mb-4 pb-2"
+              style={{ borderBottom: "2px solid rgba(100, 255, 218, 0.1)" }}
+            >
               Get in Touch
             </h5>
             <div className="contact-info">
@@ -90,16 +119,13 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-5 pt-4 text-center border-top" style={{ borderColor: "rgba(100, 255, 218, 0.1)" }}>
+        <div
+          className="mt-5 pt-4 text-center border-top"
+          style={{ borderColor: "rgba(100, 255, 218, 0.1)" }}
+        >
           <p className="text-light opacity-75 mb-0">
-            &copy; {currentYear} Saisamarth Polytech Pvt. Ltd. All Rights Reserved.
-            <Link to="/privacy" className="text-light ms-2 text-decoration-none hover-link" title="Privacy Policy" aria-label="Privacy Policy">
-              Privacy Policy
-            </Link>{" "}
-            |
-            <Link to="/terms" className="text-light ms-2 text-decoration-none hover-link" title="Terms of Service" aria-label="Terms of Service">
-              Terms of Service
-            </Link>
+            &copy; {currentYear} Saisamarth Polytech Pvt. Ltd. All Rights
+            Reserved.
           </p>
         </div>
       </div>
