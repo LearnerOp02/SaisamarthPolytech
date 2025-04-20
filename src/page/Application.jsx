@@ -3,27 +3,35 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import app1 from "./Images/app1.jpg";
+import parking from "./ApplicationImg/parking.jpg";
+import hospital from "./ApplicationImg/empty-hallway-background.jpg";
+import auto from "./ApplicationImg/auto.jpg";
+import pharma from "./ApplicationImg/pharma.jpg";
+import warehouse from "./ApplicationImg/warehouse.jpg";
+import construct from "./ApplicationImg/construct.jpg";
+import textile from "./ApplicationImg/textile.jpg";
+
 
 const sectors = [
   {
     name: "Hospital",
-    imgSrc: "https://www.saisamarthpolytech.com/images/hospital.jpg",
+    imgSrc: hospital,
     description: "Ensuring sterile environments for healthcare services.",
   },
   {
     name: "Textile",
-    imgSrc: "https://www.saisamarthpolytech.com/images/tex.jpg",
+    imgSrc: textile,
     description:
       "Maintaining clean and durable flooring for textile manufacturing.",
   },
   {
     name: "Automobile",
-    imgSrc: "https://www.saisamarthpolytech.com/images/auto.jpg",
+    imgSrc: auto,
     description: "Supporting industrial flooring for automobile production.",
   },
   {
     name: "Pharmaceutical",
-    imgSrc: "https://www.saisamarthpolytech.com/images/pharma.jpg",
+    imgSrc: pharma,
     description: "Sterile and clean environments for pharmaceutical labs.",
   },
   {
@@ -34,17 +42,17 @@ const sectors = [
   },
   {
     name: "Warehouse",
-    imgSrc: "https://www.saisamarthpolytech.com/images/warehouse.jpg",
+    imgSrc: warehouse,
     description: "Durable flooring for large warehouse spaces.",
   },
   {
     name: "Parking",
-    imgSrc: "https://www.saisamarthpolytech.com/images/parking.jpg",
+    imgSrc: parking,
     description: "Strong and resistant flooring for parking areas.",
   },
   {
     name: "Construction",
-    imgSrc: "https://www.saisamarthpolytech.com/images/construction.jpg",
+    imgSrc: construct,
     description: "Safe and resilient surfaces for construction zones.",
   },
 ];
