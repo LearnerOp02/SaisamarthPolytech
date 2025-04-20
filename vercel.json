@@ -4,23 +4,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": []
-    },
-    {
-      "source": "/.env",
-      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
-    },
-    {
-      "source": "/.git/*",
-      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
-    }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
   ]
 }
